@@ -4,10 +4,12 @@ import React from 'react';
 
 export default function MuiTypography() {
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       MuiTypography
       {/* Typography Applies the theme typography styles. */}
-      <Typography variant='h1' gutterBottom>h1</Typography>
+      <Typography variant='h1' gutterBottom>
+        h1
+      </Typography>
       <Typography variant='h2'>h2</Typography>
       <Typography variant='h3'>h3</Typography>
       {/* If we need a component with h1 tag instead of h4 tag displaying on html elements */}
