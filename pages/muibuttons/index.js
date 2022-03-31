@@ -54,7 +54,7 @@ export default function MuiButton() {
           Small
         </Button>
       </Stack>
-      <Stack spacing={2} direction='row'>
+      <Stack display='inline-block' spacing={2} direction='row'>
         {/* disableRipple turn off water waving effect on a place you click on */}
         {/* (icon before text) */}
         <Button vairant='contained' startIcon={<SendIcon />} disableRipple>

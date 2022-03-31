@@ -1,3 +1,4 @@
+import { Stack, Button, IconButton, ButtonGroup } from '@mui/material';
 import Link from 'next/link';
 
 export default function Navbar() {
@@ -79,7 +80,7 @@ export default function Navbar() {
         <div id='navbar'>
           {' '}
           <div className='' style={{ display: 'inline-block' }}>
-            <section
+            <Button
               className='buttonM '
               style={{
                 color: 'black',
@@ -96,7 +97,7 @@ export default function Navbar() {
                   <a>Home</a>
                 </Link>
               </li>
-            </section>{' '}
+            </Button>{' '}
           </div>
           <div className='' style={{ display: 'inline-block' }}>
             <section
@@ -106,16 +107,34 @@ export default function Navbar() {
               First section
               <div className='dropdown-content'>
                 {' '}
-                <li className='button'>
-                  <Link href='/typography'>
-                    <a>Link to typography</a>
-                  </Link>
-                </li>
-                <li className='button'>
-                  <Link href='/muibuttons'>
-                    <a>Link to button</a>
-                  </Link>
-                </li>
+                <Stack direction='row' display='inline-block'>
+                  {/* You can specify thig group on buttons with variant/orientation*/}
+                  <ButtonGroup
+                    variant='contained'
+                    orientation='vertical'
+                    size='small'
+                    color='secondary'
+                    aria-label='alignment button group'
+                  >
+                    <Button variant='contained'>
+                      <Link href='/typography'>
+                        <a>Link to typography</a>
+                      </Link>
+                    </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/muibuttons'>
+                        <a>Link to button</a>
+                      </Link>
+                    </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/groupbuttons'>
+                        <a>Link to Group buttons</a>
+                      </Link>
+                    </Button>
+                  </ButtonGroup>
+                </Stack>
               </div>
             </section>{' '}
           </div>
