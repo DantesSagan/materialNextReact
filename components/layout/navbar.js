@@ -100,10 +100,7 @@ export default function Navbar() {
             </Button>{' '}
           </div>
           <div className='' style={{ display: 'inline-block' }}>
-            <section
-              className='buttonM dropdown'
-              style={{ display: 'inline-block' }}
-            >
+            <section className='buttonM dropdown'>
               First section
               <div className='dropdown-content'>
                 {' '}
@@ -137,6 +134,12 @@ export default function Navbar() {
                       {' '}
                       <Link href='/togglebutton'>
                         <a>Link to Toggle-button</a>
+                      </Link>
+                    </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/textfield'>
+                        <a>Link to Text-field</a>
                       </Link>
                     </Button>
                   </ButtonGroup>

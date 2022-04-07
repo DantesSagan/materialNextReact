@@ -39,25 +39,43 @@ export default function ToggleButtons() {
   //   setFormats(updatedFormats);
   // };
 
-  const fontItalic =
+  const fontItalics =
     formats[0] === 'italic' ||
     formats[1] === 'italic' ||
     formats[2] === 'italic'
       ? 'italic'
       : null;
+
+  const fontWeights =
+    formats[0] === 'bold' || formats[1] === 'bold' || formats[2] === 'bold'
+      ? 'bold'
+      : null;
+
+  const fontUnderline =
+    formats[0] === 'underline' ||
+    formats[1] === 'underline' ||
+    formats[2] === 'underline'
+      ? 'underline'
+      : null;
+
   return (
-    <Stack
-      direction='row'
-      display='inline-block'
-      style={{ textAlign: 'center' }}
-    >
+    <Stack direction='row' display='inline-block'>
+      {' '}
+      <TextareaAutosize
+        onChange={({ target }) => setText(target.value)}
+        value={text}
+        style={{
+          fontStyle: fontItalics,
+          textDecoration: fontUnderline,
+          fontWeight: fontWeights,
+        }}
+      />{' '}
       <ToggleButtonGroup
         aria-label='text formatting'
         value={formats}
         onChange={handleFormatChange}
         size='small'
         color='success'
-        orientation='vertical'
         // And if we assign exclusive parameter in this case to ToggleButtonGroup
         // Will be used and stored only one parameter
       >
@@ -70,13 +88,25 @@ export default function ToggleButtons() {
         <ToggleButton value='underline' aria-label='underlined'>
           <FormatUnderlined />
         </ToggleButton>
-      </ToggleButtonGroup>
-      <TextareaAutosize
-        onChange={({ target }) => setText(target.value)}
-        value={text}
-      />
-      <div style={{ fontStyle: fontItalic }}>{text}</div>
-      <Typography variant='h1' gutterBottom>
+      </ToggleButtonGroup>{' '}
+      <h1
+        style={{
+          fontStyle: fontItalics,
+          textDecoration: fontUnderline,
+          fontWeight: fontWeights,
+        }}
+      >
+        {text}
+      </h1>
+      <Typography
+        variant='h1'
+        gutterBottom
+        style={{
+          fontStyle: fontItalics,
+          textDecoration: fontUnderline,
+          fontWeight: fontWeights,
+        }}
+      >
         h1
       </Typography>
     </Stack>

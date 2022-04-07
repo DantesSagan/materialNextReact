@@ -6,7 +6,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <div>
       <Navbar />
-      <div style={{ minHeight: '50vh' }}>
+      <div style={{ minHeight: '50vh', textAlign: 'center' }}>
         <Component {...pageProps} />
       </div>
     </div>
