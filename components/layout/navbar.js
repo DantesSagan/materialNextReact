@@ -133,6 +133,12 @@ export default function Navbar() {
                         <a>Link to Group buttons</a>
                       </Link>
                     </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/togglebutton'>
+                        <a>Link to Toggle-button</a>
+                      </Link>
+                    </Button>
                   </ButtonGroup>
                 </Stack>
               </div>

@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function MuiButton() {
   return (
-    <Stack direction='row' display='inline-block'>
+    <Stack direction='row' display='inline-block' textAlign='center'>
       {/* You can specify thig group on buttons with variant/orientation*/}
       <ButtonGroup
         variant='contained'
