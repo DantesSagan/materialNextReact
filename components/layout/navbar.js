@@ -142,6 +142,12 @@ export default function Navbar() {
                         <a>Link to Text-field</a>
                       </Link>
                     </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/select'>
+                        <a>Link to Select</a>
+                      </Link>
+                    </Button>
                   </ButtonGroup>
                 </Stack>
               </div>

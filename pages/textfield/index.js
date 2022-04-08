@@ -86,7 +86,6 @@ export default function FieldText() {
                 )}
               </InputAdornment>
             ),
-            hidden: <InputAdornment position='end'>kg</InputAdornment>,
           }}
         />
         <TextField
