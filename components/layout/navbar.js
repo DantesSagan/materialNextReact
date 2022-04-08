@@ -148,6 +148,18 @@ export default function Navbar() {
                         <a>Link to Select</a>
                       </Link>
                     </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/radiobutton'>
+                        <a>Link to RadioButton</a>
+                      </Link>
+                    </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/checkbox'>
+                        <a>Link to Checkbox</a>
+                      </Link>
+                    </Button>
                   </ButtonGroup>
                 </Stack>
               </div>
