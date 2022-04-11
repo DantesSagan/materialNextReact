@@ -1,4 +1,4 @@
-import { Bookmark, BookmarkBorder, TramOutlined } from '@mui/icons-material';
+import { Bookmark, BookmarkBorder } from '@mui/icons-material';
 import {
   Box,
   FormControlLabel,
@@ -7,10 +7,8 @@ import {
   FormLabel,
   FormGroup,
   FormHelperText,
-  Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-import MuiTypography from '../typography';
 
 export default function IndexCheckBoxMUI() {
   const [acceptTnC, setAcceptTnC] = useState(false);

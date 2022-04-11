@@ -1,21 +1,21 @@
 import { Box, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
-export default function IndexSelect({ posts }) {
+export default function IndexSelect() {
   const [countries, setCountries] = useState<string[]>([]);
 
-  // const [arrayCountry, setArrayCountry] = useState([]);
+  const [arrayCountry, setArrayCountry] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchCountryData = async () => {
-  //     const response = await fetch('/api/country');
-  //     const data = await response.json();
+  useEffect(() => {
+    const fetchCountryData = async () => {
+      const response = await fetch('/api/country');
+      const data = await response.json();
 
-  //     setArrayCountry(data);
-  //     console.log(data);
-  //   };
-  //   fetchCountryData();
-  // }, []);
+      setArrayCountry(data);
+      console.log(data);
+    };
+    fetchCountryData();
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -47,10 +47,10 @@ export default function IndexSelect({ posts }) {
           error={!countries}
         >
           {/* <MenuItem value={posts.country}>{posts.country}</MenuItem> */}
-          {Object.keys(posts).map((item) => {
+          {Object.keys(arrayCountry).map((item) => {
             return (
-              <MenuItem value={posts[item].country} key={item}>
-                {posts[item].country}
+              <MenuItem value={arrayCountry[item].country} key={item}>
+                {arrayCountry[item].country}
               </MenuItem>
             );
           })}
@@ -60,15 +60,15 @@ export default function IndexSelect({ posts }) {
   );
 }
 
-export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/api/country');
-  const posts = await res.json();
+// export async function getStaticProps() {
+//   const res = await fetch('http://localhost:3000/api/country');
+//   const posts = await res.json();
 
-  return {
-    props: {
-      posts,
-    },
+//   return {
+//     props: {
+//       posts,
+//     },
 
-    revalidate: 10, // In seconds
-  };
-}
+//     revalidate: 10, // In seconds
+//   };
+// }
