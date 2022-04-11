@@ -13,6 +13,8 @@
 }
 
 .footer {
+  margin: 10px;
+  position: relative;
   display: flex;
   flex: 1;
   padding: 2rem 0;

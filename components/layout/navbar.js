@@ -1,7 +1,7 @@
-import { Stack, Button, IconButton, ButtonGroup } from '@mui/material';
+import { Stack, Button, ButtonGroup } from '@mui/material';
 import Link from 'next/link';
 
-export default function Navbar() {
+export default function Navbar({ color }) {
   // const seed = seedDatabse(firebaseLib);
   // console.log(seed);
   //   const router = useRouter();
@@ -80,22 +80,10 @@ export default function Navbar() {
         <div id='navbar'>
           {' '}
           <div className='' style={{ display: 'inline-block' }}>
-            <Button
-              className='buttonM '
-              style={{
-                color: 'black',
-              }}
-            >
+            <Button className='buttonM'>
               {' '}
-              <li
-                className='button'
-                style={{
-                  color: 'black',
-                }}
-              >
-                <Link href='/'>
-                  <a>Home</a>
-                </Link>
+              <li className='button'>
+                <Link href='/'>Home</Link>
               </li>
             </Button>{' '}
           </div>
@@ -136,6 +124,25 @@ export default function Navbar() {
                         <a>Link to Toggle-button</a>
                       </Link>
                     </Button>
+                  </ButtonGroup>
+                </Stack>
+              </div>
+            </section>{' '}
+          </div>
+          <div className='' style={{ display: 'inline-block' }}>
+            <section className='buttonM dropdown'>
+              Second section
+              <div className='dropdown-content'>
+                {' '}
+                <Stack direction='row' display='inline-block'>
+                  {/* You can specify thig group on buttons with variant/orientation*/}
+                  <ButtonGroup
+                    variant='contained'
+                    orientation='vertical'
+                    size='small'
+                    color='secondary'
+                    aria-label='alignment button group'
+                  >
                     <Button variant='contained'>
                       {' '}
                       <Link href='/textfield'>
