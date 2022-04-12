@@ -24,7 +24,6 @@ export default function AutoCompleteIndex() {
   return (
     <Stack spacing={2} alignItems='center'>
       {/* Autocomplete - uses if you need list of suggestions of strings to complete input with some values you need */}
-
       <Typography variant='h4'>Standart value w/ freeSolo</Typography>
       <Autocomplete
         value={value}

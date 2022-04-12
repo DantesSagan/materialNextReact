@@ -194,6 +194,14 @@ export default function Navbar({ color }) {
                       {' '}
                       <Link href='/rating'>Link to Rating</Link>
                     </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/autocomplete'>Link to Autocomplete</Link>
+                    </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/calculator'>Link to Calculator</Link>
+                    </Button>
                   </ButtonGroup>
                 </Stack>
               </div>
