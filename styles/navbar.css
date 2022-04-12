@@ -8,13 +8,11 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background: black;
   min-width: 160px;
 }
 
 .dropdown:hover .dropdown-content {
   position: absolute;
-  background-color: black;
   display: block;
   border-radius: 15px;
 }

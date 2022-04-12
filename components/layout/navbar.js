@@ -172,6 +172,33 @@ export default function Navbar({ color }) {
               </div>
             </section>{' '}
           </div>
+          <div className='' style={{ display: 'inline-block' }}>
+            <section className='buttonM dropdown'>
+              Third section
+              <div className='dropdown-content'>
+                {' '}
+                <Stack direction='row' display='inline-block'>
+                  {/* You can specify thig group on buttons with variant/orientation*/}
+                  <ButtonGroup
+                    variant='contained'
+                    orientation='vertical'
+                    size='small'
+                    color='secondary'
+                    aria-label='alignment button group'
+                  >
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/switch'>Link to Swtich</Link>
+                    </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/rating'>Link to Rating</Link>
+                    </Button>
+                  </ButtonGroup>
+                </Stack>
+              </div>
+            </section>{' '}
+          </div>
         </div>
       </nav>
     </div>

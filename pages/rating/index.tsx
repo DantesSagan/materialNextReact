@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import { Button, Rating, Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react';
@@ -70,7 +69,9 @@ export default function RatingIndex({ rating }) {
     submitRating(newValue);
     getDataDB();
   };
+
   console.log(array);
+
   return (
     <Stack spacing={2} alignItems='center'>
       {/* You can add to rating highlightSelectedOnly and will be displayed only one icon which was selected in rating score 
@@ -84,7 +85,13 @@ export default function RatingIndex({ rating }) {
         icon={<Favorite fontSize='inherit' color='primary' />}
         emptyIcon={<FavoriteBorder fontSize='inherit' color='error' />}
       />
-      <Button color='primary' onClick={() => setValue(null)}>
+      <Button
+        color='primary'
+        onClick={() => {
+          setValue(null);
+          window.location.reload();
+        }}
+      >
         Clear rating
       </Button>
       {Object.keys(array).map((item) => {
