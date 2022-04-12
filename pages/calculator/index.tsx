@@ -2,9 +2,9 @@ import { Button, Stack, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
 export default function CalculatorIndex() {
-  const [numberOne, setNumberOne] = useState<string | null>(null);
-  const [numberTwo, setNumberTwo] = useState<string | null>(null);
-  const [display, setDisplay] = useState<string | null>(null);
+  const [numberOne, setNumberOne] = useState<string>('');
+  const [numberTwo, setNumberTwo] = useState<string>('');
+  const [display, setDisplay] = useState<number | null>(null);
 
   const [calc, setCalc] = useState<string[]>([]);
   const array = ['20', '+', '10'];
@@ -41,8 +41,12 @@ export default function CalculatorIndex() {
     ];
   };
 
+  // const formatNumber = (num: number) => {
+  //   return num.toString().replace(/[(\d)(.)]/g, /[(\d)(.)(\d{3})]/g);
+  // };
+
   return (
-    <Stack alignItems='center'>
+    <Stack alignItems='center' justifyItems='center'>
       <Stack minWidth={200} maxWidth={400}>
         <Typography variant='h1'>Calculator</Typography>
         <TextField
