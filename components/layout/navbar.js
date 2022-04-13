@@ -89,7 +89,7 @@ export default function Navbar({ color }) {
           </div>
           <div className='' style={{ display: 'inline-block' }}>
             <section className='buttonM dropdown'>
-              First section
+              Interactive section
               <div className='dropdown-content'>
                 {' '}
                 <Stack direction='row' display='inline-block'>
@@ -131,7 +131,7 @@ export default function Navbar({ color }) {
           </div>
           <div className='' style={{ display: 'inline-block' }}>
             <section className='buttonM dropdown'>
-              Second section
+              Inputs section
               <div className='dropdown-content'>
                 {' '}
                 <Stack direction='row' display='inline-block'>
@@ -166,6 +166,22 @@ export default function Navbar({ color }) {
                       <Link href='/checkbox'>
                         <a>Link to Checkbox</a>
                       </Link>
+                    </Button>{' '}
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/switch'>Link to Swtich</Link>
+                    </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/rating'>Link to Rating</Link>
+                    </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/autocomplete'>Link to Autocomplete</Link>
+                    </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/calculator'>Link to Calculator</Link>
                     </Button>
                   </ButtonGroup>
                 </Stack>
@@ -186,21 +202,10 @@ export default function Navbar({ color }) {
                     color='secondary'
                     aria-label='alignment button group'
                   >
+                    {' '}
                     <Button variant='contained'>
                       {' '}
-                      <Link href='/switch'>Link to Swtich</Link>
-                    </Button>
-                    <Button variant='contained'>
-                      {' '}
-                      <Link href='/rating'>Link to Rating</Link>
-                    </Button>
-                    <Button variant='contained'>
-                      {' '}
-                      <Link href='/autocomplete'>Link to Autocomplete</Link>
-                    </Button>
-                    <Button variant='contained'>
-                      {' '}
-                      <Link href='/calculator'>Link to Calculator</Link>
+                      <Link href='/box'>Link to Box</Link>
                     </Button>
                   </ButtonGroup>
                 </Stack>

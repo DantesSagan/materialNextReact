@@ -10,8 +10,13 @@ export default function MyApp({ Component, pageProps }) {
   const color = checked ? 'white' : 'black';
   return (
     <div style={{ backgroundColor: bgColor, color: color }}>
-      <Navbar  color={color} />
-      <div style={{ minHeight: '100vh', textAlign: 'center' }}>
+      <Navbar color={color} />
+      <div
+        style={{
+          minHeight: '100vh',
+          textAlign: 'center',
+        }}
+      >
         <Component {...pageProps} checked={checked} setChecked={setChecked} />
       </div>
       <Footer />
