@@ -188,7 +188,7 @@ export default function Navbar({ color }) {
           </div>
           <div className='' style={{ display: 'inline-block' }}>
             <section className='buttonM dropdown'>
-              Third section
+              Layout section
               <div className='dropdown-content'>
                 {' '}
                 <Stack direction='row' display='inline-block'>
