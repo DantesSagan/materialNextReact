@@ -63,9 +63,30 @@ export default function CalculatorIndex() {
             setNumberTwo(newValue);
           }}
         />{' '}
-        <Typography variant='h2' padding={5} border='2px solid red'>
-          {display}
+        <Typography variant='h2' padding={2} border='2px solid red'>
+          <TextField
+            placeholder='Display'
+            value={display}
+            onChange={() => setDisplay(display)}
+          />
         </Typography>
+        <Button onClick={() => setDisplay(0)} style={{ fontSize: '28px' }}>
+          Clear
+        </Button>
+        <Button
+          onClick={() =>
+            setDisplay((minus: any) => {
+              minus += '';
+              return minus
+                .split('')
+                .splice(0, minus.length - 1)
+                .join('');
+            })
+          }
+          style={{ fontSize: '28px' }}
+        >
+          C
+        </Button>
         <Button
           style={{ fontSize: '28px' }}
           size='medium'

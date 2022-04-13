@@ -1,4 +1,4 @@
-import { Box, Divider, Stack } from '@mui/material';
+import { Box, Divider, Grid, Stack } from '@mui/material';
 import React from 'react';
 
 export default function IndexBox() {
@@ -48,6 +48,38 @@ export default function IndexBox() {
       >
         Green box
       </Box>
+      {/*
+      1 Grid component under the hood uses the flexbox module
+      2 The Grid consists of 12 columns
+      3 Each item in the grid can take up one or more columns as its width
+      4 There are five breakpoints each corresponding to a certain device width
+      5 xs for mobile device size, sm for tablet, md for desktop, lg and xl for larger monitors
+      6 We can assign integer values to each breakpoint which indicates how many of the 12
+    available columns are occupied by that item when the viewport satisfies that breakpoint constraints
+    If you need to select some many similar text or component that you need to change. Select with combination of the buttons Ctrl + D text and then press Ctrl + F2, and this is select all  occurrences.
+       */}
+      <Grid container my={4} rowSpacing={2} columnSpacing={1}>
+        <Grid item xs={6}>
+          <Box bgcolor='primary.light' p={2}>
+            Item 1
+          </Box>
+        </Grid>
+        <Grid item xs={6}>
+          <Box bgcolor='primary.light' p={2}>
+            Item 2
+          </Box>
+        </Grid>
+        <Grid item xs={6}>
+          <Box bgcolor='primary.light' p={2}>
+            Item 3
+          </Box>
+        </Grid>
+        <Grid item xs={6}>
+          <Box bgcolor='primary.light' p={2}>
+            Item 4
+          </Box>
+        </Grid>
+      </Grid>
     </Stack>
   );
 }

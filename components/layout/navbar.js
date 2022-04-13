@@ -203,7 +203,7 @@ export default function Navbar({ color }) {
                     {' '}
                     <Button variant='contained'>
                       {' '}
-                      <Link href='/box'>Link to Box</Link>
+                      <Link href='/box'>Link to Box and Grid</Link>
                     </Button>
                   </ButtonGroup>
                 </Stack>
