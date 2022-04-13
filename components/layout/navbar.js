@@ -82,9 +82,7 @@ export default function Navbar({ color }) {
           <div className='' style={{ display: 'inline-block' }}>
             <Button className='buttonM'>
               {' '}
-              <li className='button'>
-                <Link href='/'>Home</Link>
-              </li>
+              <Link href='/'>Home</Link>
             </Button>{' '}
           </div>
           <div className='' style={{ display: 'inline-block' }}>

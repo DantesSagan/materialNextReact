@@ -1,10 +1,21 @@
-import { Box, Stack } from '@mui/material';
+import { Box, Divider, Stack } from '@mui/material';
 import React from 'react';
 
 export default function IndexBox() {
   return (
-    <Stack alignItems='center'>
-      {/* // Box component it's a div tag by default and you can specify like "span"
+    // Stack it's lika a div tag with default styling like direction:column
+    <Stack
+      margin={'15px'}
+      alignItems='center'
+      sx={{
+        border: '1px solid black',
+      }}
+      direction='column'
+      divider={<Divider orientation='vertical' flexItem />}
+      // Spacing work like spacing={8px * "number-value"} in example below 16 px
+      spacing={2}
+    >
+      {/* // Box component it's also a div tag by default and you can specify like "span"
       or smth else */}
       <Box
         alignItems='center'
