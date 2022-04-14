@@ -79,13 +79,13 @@ export default function Navbar({ color }) {
       >
         <div id='navbar'>
           {' '}
-          <div className='' style={{ display: 'inline-block' }}>
-            <Button className='buttonM'>
+          <div style={{ display: 'inline-block' }}>
+            <Button className='buttonM' style={{ color: 'black' }}>
               {' '}
               <Link href='/'>Home</Link>
             </Button>{' '}
           </div>
-          <div className='' style={{ display: 'inline-block' }}>
+          <div style={{ display: 'inline-block' }}>
             <section className='buttonM dropdown'>
               Interactive section
               <div className='dropdown-content'>
@@ -127,7 +127,7 @@ export default function Navbar({ color }) {
               </div>
             </section>{' '}
           </div>
-          <div className='' style={{ display: 'inline-block' }}>
+          <div style={{ display: 'inline-block' }}>
             <section className='buttonM dropdown'>
               Inputs section
               <div className='dropdown-content'>
@@ -186,7 +186,7 @@ export default function Navbar({ color }) {
               </div>
             </section>{' '}
           </div>
-          <div className='' style={{ display: 'inline-block' }}>
+          <div style={{ display: 'inline-block' }}>
             <section className='buttonM dropdown'>
               Layout section
               <div className='dropdown-content'>
@@ -204,6 +204,10 @@ export default function Navbar({ color }) {
                     <Button variant='contained'>
                       {' '}
                       <Link href='/box'>Link to Box and Grid</Link>
+                    </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/accordion'>Link to Accordion</Link>
                     </Button>
                   </ButtonGroup>
                 </Stack>
