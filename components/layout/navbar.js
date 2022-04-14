@@ -96,7 +96,7 @@ export default function Navbar({ color }) {
                     variant='contained'
                     orientation='vertical'
                     size='small'
-                    color='secondary'
+                    color='error'
                     aria-label='alignment button group'
                   >
                     <Button variant='contained'>
@@ -138,7 +138,7 @@ export default function Navbar({ color }) {
                     variant='contained'
                     orientation='vertical'
                     size='small'
-                    color='secondary'
+                    color='error'
                     aria-label='alignment button group'
                   >
                     <Button variant='contained'>
@@ -197,7 +197,7 @@ export default function Navbar({ color }) {
                     variant='contained'
                     orientation='vertical'
                     size='small'
-                    color='secondary'
+                    color='error'
                     aria-label='alignment button group'
                   >
                     {' '}
@@ -208,6 +208,10 @@ export default function Navbar({ color }) {
                     <Button variant='contained'>
                       {' '}
                       <Link href='/accordion'>Link to Accordion</Link>
+                    </Button>
+                    <Button variant='contained'>
+                      {' '}
+                      <Link href='/card'>Link to Card</Link>
                     </Button>
                   </ButtonGroup>
                 </Stack>

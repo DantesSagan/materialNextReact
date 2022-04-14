@@ -8,21 +8,28 @@ import {
 import { ExpandMore } from '@mui/icons-material';
 import React, { useState } from 'react';
 
-export default function AccordionIndex() {
-  const [hide, setHide] = useState(true);
-  const [expanded, setExpanded] = useState<string | false>(false);
+interface ISomeComponentWithGenericsProps<T> {
+  value: T;
+  hide: boolean;
+  expanded: false;
+}
+
+function AccordionIndex<T>(props: ISomeComponentWithGenericsProps<T>) {
+  const [hide, setHide] = useState(props.hide);
+  const [expanded, setExpanded] = useState<string | false>(props.expanded);
 
   const handleChange = (isExpanded: boolean, panel: string) => {
     setExpanded(isExpanded ? panel : false);
   };
+  console.log(props);
   return (
     <Stack spacing={4} display='inline-block'>
       {/* Just css and html with some js */}
-      {hide ? (
+      {!hide ? (
         <div
           onClick={() => setHide(!hide)}
           style={{
-            display:'inline-block',
+            display: 'inline-block',
             cursor: 'pointer',
             transition: 'all',
             transitionDuration: '300ms',
@@ -34,10 +41,9 @@ export default function AccordionIndex() {
         </div>
       ) : (
         <div
-         
           onClick={() => setHide(!hide)}
           style={{
-            display:'inline-block',
+            display: 'inline-block',
             cursor: 'pointer',
             transition: 'all',
             transitionDuration: '300ms',
@@ -106,3 +112,4 @@ export default function AccordionIndex() {
     </Stack>
   );
 }
+export default React.memo(AccordionIndex) as typeof AccordionIndex;
