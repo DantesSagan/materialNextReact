@@ -213,6 +213,10 @@ export default function Navbar({ color }) {
                       {' '}
                       <Link href='/card'>Link to Card</Link>
                     </Button>
+                     <Button variant='contained'>
+                      {' '}
+                      <Link href='/imagelist'>Link to ImageList</Link>
+                    </Button>
                   </ButtonGroup>
                 </Stack>
               </div>
