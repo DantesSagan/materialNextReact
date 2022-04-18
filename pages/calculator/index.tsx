@@ -41,6 +41,11 @@ export default function CalculatorIndex() {
     ];
   };
 
+  const allClear = () => {
+    setNumberOne('');
+    setNumberTwo('');
+    setDisplay(0);
+  };
   // const formatNumber = (num: number) => {
   //   return num.toString().replace(/[(\d)(.)]/g, /[(\d)(.)(\d{3})]/g);
   // };
@@ -70,7 +75,7 @@ export default function CalculatorIndex() {
             onChange={() => setDisplay(display)}
           />
         </Typography>
-        <Button onClick={() => setDisplay(0)} style={{ fontSize: '28px' }}>
+        <Button onClick={allClear} style={{ fontSize: '28px' }}>
           Clear
         </Button>
         <Button

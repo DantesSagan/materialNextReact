@@ -13,14 +13,17 @@
 }
 
 .footer {
+  background-color: blue;
   margin: 10px;
-  position: relative;
-  display: flex;
-  flex: 1;
+  position: fixed;
   padding: 2rem 0;
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+}
+
+.shadow {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
 .footer a {
