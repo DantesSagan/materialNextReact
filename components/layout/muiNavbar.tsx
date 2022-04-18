@@ -2,13 +2,14 @@ import {
   AppBar,
   Button,
   IconButton,
-  Link,
   Menu,
   MenuItem,
   Stack,
   Toolbar,
   Typography,
 } from '@mui/material';
+
+import Link from 'next/link';
 
 import { CatchingPokemon, KeyboardArrowDown } from '@mui/icons-material';
 import React, { useState } from 'react';
@@ -159,28 +160,28 @@ export default function NavbarIndexTop({ checked, setChecked }) {
         >
           <MenuItem onClick={handleClose}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/typography'>
+              <Link  href='/typography'>
                 Link to typography
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/muibuttons'>
+              <Link  href='/muibuttons'>
                 Link to button
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/groupbuttons'>
+              <Link  href='/groupbuttons'>
                 Link to Group buttons
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/togglebutton'>
+              <Link  href='/togglebutton'>
                 Link to Toggle-button
               </Link>
             </Typography>
@@ -205,49 +206,49 @@ export default function NavbarIndexTop({ checked, setChecked }) {
         >
           <MenuItem onClick={handleCloseTwo}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/textfield'>
+              <Link  href='/textfield'>
                 Link to Text-field
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleCloseTwo}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/select'>
+              <Link  href='/select'>
                 Link to Select
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleCloseTwo}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/radiobutton'>
+              <Link  href='/radiobutton'>
                 Link to RadioButton
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleCloseTwo}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/checkbox'>
+              <Link  href='/checkbox'>
                 Link to Checkbox
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleCloseTwo}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/rating'>
+              <Link  href='/rating'>
                 Link to Rating
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleCloseTwo}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/autocomplete'>
+              <Link  href='/autocomplete'>
                 Link to Autocomplete
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleCloseTwo}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/calculator'>
+              <Link  href='/calculator'>
                 Link to Calculator
               </Link>
             </Typography>
@@ -272,35 +273,35 @@ export default function NavbarIndexTop({ checked, setChecked }) {
         >
           <MenuItem onClick={handleCloseThree}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/box'>
+              <Link  href='/box'>
                 Link to Box and Grid
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleCloseThree}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/accordion'>
+              <Link  href='/accordion'>
                 Link to Accordion
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleCloseThree}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/card'>
+              <Link  href='/card'>
                 Link to Card
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleCloseThree}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/imagelist'>
+              <Link  href='/imagelist'>
                 Link to ImageList
               </Link>
             </Typography>
           </MenuItem>
           <MenuItem onClick={handleCloseThree}>
             <Typography variant='h6'>
-              <Link color='secondary' underline='none' href='/navbar'>
+              <Link  href='/navbar'>
                 Link to Navbar
               </Link>
             </Typography>
