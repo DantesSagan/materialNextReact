@@ -48,11 +48,11 @@ export default function CardIndex() {
     ref.current = setInterval(() => {
       getData();
       console.log('Та-да!');
-    }, 5000);
+    }, 10000);
   };
   // clear interval of images to stop 
   const clearInt = () => {
-    console.log('ClearInterval clicked');
+    console.log('Clear Interval clicked');
     clearInterval(ref.current);
   };
 
