@@ -29,6 +29,8 @@ function AccordionIndex<T>(props: ISomeComponentWithGenericsProps<T>) {
         <div
           onClick={() => setHide(!hide)}
           style={{
+            color: 'white',
+            backgroundColor: 'black',
             display: 'inline-block',
             cursor: 'pointer',
             transition: 'all',
@@ -43,6 +45,8 @@ function AccordionIndex<T>(props: ISomeComponentWithGenericsProps<T>) {
         <div
           onClick={() => setHide(!hide)}
           style={{
+            color: 'black',
+            backgroundColor: 'white',
             display: 'inline-block',
             cursor: 'pointer',
             transition: 'all',

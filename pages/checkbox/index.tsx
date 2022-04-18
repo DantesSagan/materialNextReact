@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 
-export default function IndexCheckBoxMUI() {
+export default function IndexCheckBoxMUI({ checked }) {
   const [acceptTnC, setAcceptTnC] = useState(false);
   const [error, setError] = useState(false);
   const [skills, setSkills] = useState<string[]>([]);
@@ -42,12 +42,10 @@ export default function IndexCheckBoxMUI() {
       />
       <label htmlFor='check'>I accept terms and conditions</label>
       <Box>
-        <Box>
-          <FormControlLabel
-            label='I accept terms and conditions'
-            control={<Checkbox checked={acceptTnC} onChange={handleChange} />}
-          />
-        </Box>
+        <FormControlLabel
+          label='I accept terms and conditions'
+          control={<Checkbox checked={acceptTnC} onChange={handleChange} />}
+        />
       </Box>
       <Box>
         <Checkbox
@@ -67,6 +65,8 @@ export default function IndexCheckBoxMUI() {
           </FormLabel>
           <FormGroup>
             <FormControlLabel
+              // color='error'
+              // style={{ borderColor: checked ? 'black' : 'white' }}
               label='HTML'
               value='HTML'
               control={

@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-export default function ToggleButtons() {
+export default function ToggleButtons({ checked }) {
   // In this case when you toggle the button of BOLD || ITALIC || UNDERLINED
   // By specify useState formats will be pushed into array which will store data
   // What formats will be displayed and hold Formats for specify text in input or textarea
@@ -79,13 +79,25 @@ export default function ToggleButtons() {
         // And if we assign exclusive parameter in this case to ToggleButtonGroup
         // Will be used and stored only one parameter
       >
-        <ToggleButton value='bold' aria-label='bold'>
+        <ToggleButton
+          value='bold'
+          aria-label='bold'
+          style={{ backgroundColor: checked ? 'white' : 'white' }}
+        >
           <FormatBold />
         </ToggleButton>
-        <ToggleButton value='italic' aria-label='italic'>
+        <ToggleButton
+          value='italic'
+          aria-label='italic'
+          style={{ backgroundColor: checked ? 'white' : 'white' }}
+        >
           <FormatItalic />
         </ToggleButton>
-        <ToggleButton value='underline' aria-label='underlined'>
+        <ToggleButton
+          value='underline'
+          aria-label='underlined'
+          style={{ backgroundColor: checked ? 'white' : 'white' }}
+        >
           <FormatUnderlined />
         </ToggleButton>
       </ToggleButtonGroup>{' '}

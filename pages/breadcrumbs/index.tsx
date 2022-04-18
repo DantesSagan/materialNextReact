@@ -1,8 +1,9 @@
 import { NavigateNext } from '@mui/icons-material';
-import { Breadcrumbs, Link } from '@mui/material';
+import { Breadcrumbs } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 
+import Link from 'next/link';
 export default function BreadCrumbsindex() {
   return (
     <Box m={2}>
@@ -14,21 +15,11 @@ export default function BreadCrumbsindex() {
         // display item after collapse button
         itemsAfterCollapse={2}
       >
-        <Link underline='hover' href='/'>
-          Home
-        </Link>
-        <Link underline='hover' href='/'>
-          Music
-        </Link>
-        <Link underline='hover' href='/'>
-          Music instruments
-        </Link>
-        <Link underline='hover' href='/'>
-          Guitars
-        </Link>
-        <Link underline='hover' href='/'>
-          Acustic guitars
-        </Link>
+        <Link href='/'>Home</Link>
+        <Link href='/'>Music</Link>
+        <Link href='/'>Music instruments</Link>
+        <Link href='/'>Guitars</Link>
+        <Link href='/'>Acustic guitars</Link>
       </Breadcrumbs>
     </Box>
   );

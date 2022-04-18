@@ -2,10 +2,13 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Stack, TextField, InputAdornment, Button } from '@mui/material';
 import { useState } from 'react';
 
-export default function FieldText() {
+export default function FieldText({ checked }) {
   const [toggle, setToggle] = useState(true);
   const [type, setType] = useState('');
   const [value, setValue] = useState('');
+
+  const inputText = checked ? 'black' : 'white';
+  const inputBorder = checked ? 'none' : '2px solid blue';
   return (
     <Stack spacing={4} alignItems='center'>
       {/* 
@@ -13,15 +16,28 @@ export default function FieldText() {
       with other variant
       */}
       <Stack direction='row' spacing={2}>
-        <TextField label='Name' variant='outlined' />
-        <TextField label='Second Name' variant='filled' />
-        <TextField label='Last Name' variant='standard' />
+        <TextField
+          sx={{ input: { color: inputText, border: inputBorder } }}
+          label='Name'
+          variant='outlined'
+        />
+        <TextField
+          sx={{ input: { color: inputText, border: inputBorder } }}
+          label='Second Name'
+          variant='filled'
+        />
+        <TextField
+          sx={{ input: { color: inputText, border: inputBorder } }}
+          label='Last Name'
+          variant='standard'
+        />
       </Stack>
       <Stack direction='row' spacing={2}>
         {/* In this case we are used color that will be covered when we focus to the input 
         And additionally we are set error where we don't fill this input will give us an error and if we type something in this input error is gone
         */}
         <TextField
+          sx={{ input: { color: inputText, border: '0.5px solid red' } }}
           label='Small secondary'
           variant='outlined'
           color='secondary'
@@ -32,6 +48,7 @@ export default function FieldText() {
         />
         {/* Adding required property to specify this input with reduired assigned value */}
         <TextField
+          sx={{ input: { color: inputText, border: inputBorder } }}
           label='Small secondary'
           variant='outlined'
           color='secondary'
@@ -39,6 +56,7 @@ export default function FieldText() {
         />
         {/* In this case we added helperText to dispay below input text that you need */}
         <TextField
+          sx={{ input: { color: inputText, border: inputBorder } }}
           style={{
             maxWidth: '200px',
             minWidth: '150px',
@@ -89,6 +107,7 @@ export default function FieldText() {
           }}
         />
         <TextField
+          sx={{ input: { color: inputText, border: inputBorder } }}
           inputProps={{ readOnly: true }}
           type='password'
           label='Read only'
@@ -99,6 +118,7 @@ export default function FieldText() {
       </Stack>
       <Stack direction='row' spacing={2}>
         <TextField
+          sx={{ input: { color: inputText, border: inputBorder } }}
           label='Amount'
           InputProps={{
             startAdornment: <InputAdornment position='start'>$</InputAdornment>,
@@ -106,6 +126,7 @@ export default function FieldText() {
         />
 
         <TextField
+          sx={{ input: { color: inputText, border: inputBorder } }}
           label='Amount'
           InputProps={{
             endAdornment: <InputAdornment position='end'>kg</InputAdornment>,

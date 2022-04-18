@@ -1,7 +1,7 @@
 import { Box, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
-export default function IndexSelect() {
+export default function IndexSelect({ checked }) {
   const [countries, setCountries] = useState<string[]>([]);
 
   const [arrayCountry, setArrayCountry] = useState([]);
@@ -34,6 +34,8 @@ export default function IndexSelect() {
       </Typography>
       <Box width='250px'>
         <TextField
+          style={{ color: checked ? 'black' : 'white' }}
+          focused
           label='Select countries'
           select
           value={countries}

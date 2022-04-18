@@ -1,7 +1,7 @@
 import { Button, Stack, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
-export default function CalculatorIndex() {
+export default function CalculatorIndex({ checked }) {
   const [numberOne, setNumberOne] = useState<string>('');
   const [numberTwo, setNumberTwo] = useState<string>('');
   const [display, setDisplay] = useState<number | null>(null);
@@ -50,11 +50,16 @@ export default function CalculatorIndex() {
   //   return num.toString().replace(/[(\d)(.)]/g, /[(\d)(.)(\d{3})]/g);
   // };
 
+  const inputText = checked ? 'black' : 'white';
+
   return (
     <Stack alignItems='center' justifyItems='center'>
       <Stack minWidth={200} maxWidth={400}>
         <Typography variant='h1'>Calculator</Typography>
         <TextField
+          sx={{ input: { color: inputText } }}
+          style={{ padding: '5px' }}
+          focused
           value={numberOne}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const newValue = e.target.value;
@@ -62,6 +67,9 @@ export default function CalculatorIndex() {
           }}
         />
         <TextField
+          sx={{ input: { color: inputText } }}
+          style={{ padding: '5px' }}
+          focused
           value={numberTwo}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const newValue = e.target.value;
@@ -70,6 +78,7 @@ export default function CalculatorIndex() {
         />{' '}
         <Typography variant='h2' padding={2} border='2px solid red'>
           <TextField
+            sx={{ input: { color: inputText } }}
             placeholder='Display'
             value={display}
             onChange={() => setDisplay(display)}
