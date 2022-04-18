@@ -21,7 +21,7 @@ export default function MyApp({ Component, pageProps }) {
         }}
       >
         {/* <Suspense fallback={<div>Loading...</div>}> */}
-        <Component {...pageProps} checked={checked} setChecked={setChecked} />
+          <Component {...pageProps} checked={checked} setChecked={setChecked} />
         {/* </Suspense> */}
       </div>
       <Footer checked={checked} setChecked={setChecked} />
