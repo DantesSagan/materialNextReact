@@ -1,6 +1,6 @@
 import { ratingValue } from '../../../components/data/rating';
 
-export default function handler(req, res) {
+export default function handler(req, res, err) {
   if (req.method === 'GET') {
     res.status(200).json(ratingValue);
     // check if submitted method is POST
@@ -16,5 +16,14 @@ export default function handler(req, res) {
     };
     ratingValue.push(newRating);
     res.status(201).json(newRating);
+  } else if (req.method === 'DELETE') {
+    if (err) {
+      return res.status(400).json({ error: err.message });
+    }
+    const scoreDelete = req.body.array;
+
+
+    ratingValue.pop(0, scoreDelete.length - 1);
+    res.status(200).json(scoreDelete);
   }
 }

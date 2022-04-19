@@ -51,6 +51,9 @@ export default function NavbarIndexTop({ checked, setChecked }) {
 
   const navBgColor = checked ? 'white' : 'black';
   const navTextColor = checked ? 'black' : 'white';
+
+  const borderColor = checked ? 'black' : 'white';
+  const bgColor = checked ? 'white' : 'black';
   return (
     <AppBar
       position='static'
@@ -134,6 +137,14 @@ export default function NavbarIndexTop({ checked, setChecked }) {
         </Stack>
 
         <Menu
+          PaperProps={{
+            sx: {
+              backgroundColor: bgColor,
+              border: '1px solid',
+              borderColor: borderColor,
+              color: borderColor,
+            },
+          }}
           id='resources-menu'
           anchorEl={anchorEl}
           open={open}
@@ -165,6 +176,14 @@ export default function NavbarIndexTop({ checked, setChecked }) {
         </Menu>
 
         <Menu
+          PaperProps={{
+            sx: {
+              backgroundColor: bgColor,
+              border: '1px solid',
+              borderColor: borderColor,
+              color: borderColor,
+            },
+          }}
           anchorEl={anchorElTwo}
           open={openTwo}
           MenuListProps={{
@@ -204,6 +223,14 @@ export default function NavbarIndexTop({ checked, setChecked }) {
         </Menu>
 
         <Menu
+          PaperProps={{
+            sx: {
+              backgroundColor: bgColor,
+              border: '1px solid',
+              borderColor: borderColor,
+              color: borderColor,
+            },
+          }}
           anchorEl={anchorElThree}
           open={openThree}
           MenuListProps={{
@@ -233,6 +260,9 @@ export default function NavbarIndexTop({ checked, setChecked }) {
           </MenuItem>
           <MenuItem onClick={handleCloseThree}>
             <Link href='/navbar'>Link to Navbar</Link>
+          </MenuItem>
+          <MenuItem onClick={handleCloseThree}>
+            <Link href='/drawer'>Link to Drawer</Link>
           </MenuItem>
         </Menu>
       </Toolbar>

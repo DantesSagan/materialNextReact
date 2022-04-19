@@ -11,17 +11,22 @@ export default function MyApp({ Component, pageProps }) {
   const bgColor = checked ? 'white' : 'black';
   const color = checked ? 'black' : 'white';
   return (
-    <div style={{ backgroundColor: bgColor, color: color, minHeight: '100vh' }}>
+    <div
+      style={{
+        backgroundColor: bgColor,
+        color: color,
+        minHeight: '100vh',
+      }}
+    >
       <NavbarIndexTop checked={checked} setChecked={setChecked} />
       <div
         style={{
-          marginBottom: '150px',
-          minHeight: '50vh',
           textAlign: 'center',
+          paddingBottom: '150px',
         }}
       >
         {/* <Suspense fallback={<div>Loading...</div>}> */}
-          <Component {...pageProps} checked={checked} setChecked={setChecked} />
+        <Component {...pageProps} checked={checked} setChecked={setChecked} />
         {/* </Suspense> */}
       </div>
       <Footer checked={checked} setChecked={setChecked} />

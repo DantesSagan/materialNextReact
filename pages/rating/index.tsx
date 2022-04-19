@@ -70,6 +70,19 @@ export default function RatingIndex({ rating }) {
     getDataDB();
   };
 
+  // API DELETE REQUEST COMMENT
+  const deleteComment = async () => {
+    const response = await fetch('/api/rating', {
+      method: 'DELETE',
+      body: JSON.stringify({ array }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
   console.log(array);
 
   return (
@@ -88,8 +101,11 @@ export default function RatingIndex({ rating }) {
       <Button
         color='primary'
         onClick={() => {
+          deleteComment();
           setValue(null);
-          window.location.reload();
+          setArray((minus: []) => {
+            return minus.slice(0, minus.length - 1);
+          });
         }}
       >
         Clear rating
