@@ -23,6 +23,7 @@ export default function MyApp({ Component, pageProps }) {
         style={{
           textAlign: 'center',
           paddingBottom: '150px',
+          paddingTop: '200px',
         }}
       >
         {/* <Suspense fallback={<div>Loading...</div>}> */}

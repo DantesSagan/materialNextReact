@@ -11,10 +11,15 @@ import {
 
 import Link from 'next/link';
 
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { Visibility } from '@mui/icons-material';
+
 import { CatchingPokemon, KeyboardArrowDown } from '@mui/icons-material';
 import React, { useState } from 'react';
 
 export default function NavbarIndexTop({ checked, setChecked }) {
+  const [hide, setHide] = useState(true);
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -54,9 +59,9 @@ export default function NavbarIndexTop({ checked, setChecked }) {
 
   const borderColor = checked ? 'black' : 'white';
   const bgColor = checked ? 'white' : 'black';
+
   return (
     <AppBar
-      position='static'
       style={{
         marginBottom: '50px',
         backgroundColor: navBgColor,
@@ -65,207 +70,233 @@ export default function NavbarIndexTop({ checked, setChecked }) {
         borderColor: navTextColor,
       }}
     >
-      <Toolbar>
-        <IconButton size='large' edge='start' color='inherit' aria-label='logo'>
-          <CatchingPokemon />
-        </IconButton>
-        <Typography variant='h3' component='div' sx={{ flexGrow: 1 }}>
-          PokemonApp
-        </Typography>
-        <Button
-          variant='contained'
-          component='button'
-          style={{
-            backgroundColor: navBgColor,
-            color: navTextColor,
-          }}
-          onClick={() => setChecked(!checked)}
-        >
-          {checked ? 'White' : 'Black'}
-        </Button>
-
-        <Stack direction='row' spacing={2}>
+      {hide ? (
+        <Toolbar className='columnNavbar'>
+          <IconButton
+            onClick={() => setHide(!hide)}
+            size='large'
+            edge='start'
+            color='inherit'
+            aria-label='logo'
+          >
+            <Visibility />
+          </IconButton>
+          <Typography variant='h3' component='div' sx={{ flexGrow: 1 }}>
+            PokemonApp
+          </Typography>
           <Button
             variant='contained'
+            component='button'
             style={{
               backgroundColor: navBgColor,
               color: navTextColor,
             }}
-            component='button'
+            onClick={() => setChecked(!checked)}
           >
-            <Link href='/'>Home</Link>
+            {checked ? 'White' : 'Black'}
           </Button>
 
-          <Button
+          <Stack direction='row' spacing={2} className='columnNavbar'>
+            <Button
+              variant='contained'
+              style={{
+                backgroundColor: navBgColor,
+                color: navTextColor,
+              }}
+              component='button'
+            >
+              <Link href='/'>Home</Link>
+            </Button>
+
+            <Button
+              color='inherit'
+              id='resources-button'
+              onClick={handleClick}
+              // in this case if boolen (open) is true so handle it with resources-menu if no set it to undefined
+              aria-controls={open ? 'resources-menu' : undefined}
+              aria-haspopup='true'
+              aria-expanded={open ? 'true' : undefined}
+              endIcon={<KeyboardArrowDown />}
+            >
+              Interactive section
+            </Button>
+
+            <Button
+              color='inherit'
+              id='resources-buttonTwo'
+              onClick={handleClickTwo}
+              // in this case if boolen (open) is true so handle it with resources-menu if no set it to undefined
+              aria-controls={openTwo ? 'resources-menuTwo' : undefined}
+              aria-haspopup='true'
+              aria-expanded={openTwo ? 'true' : undefined}
+              endIcon={<KeyboardArrowDown />}
+            >
+              Inputs section
+            </Button>
+
+            <Button
+              color='inherit'
+              id='resources-buttonThree'
+              onClick={handleClickThree}
+              // in this case if boolen (open) is true so handle it with resources-menu if no set it to undefined
+              aria-controls={openThree ? 'resources-menuThree' : undefined}
+              aria-haspopup='true'
+              aria-expanded={openThree ? 'true' : undefined}
+              endIcon={<KeyboardArrowDown />}
+            >
+              Layout section
+            </Button>
+          </Stack>
+
+          <Menu
+            PaperProps={{
+              sx: {
+                backgroundColor: bgColor,
+                border: '1px solid',
+                borderColor: borderColor,
+                color: borderColor,
+              },
+            }}
+            id='resources-menu'
+            anchorEl={anchorEl}
+            open={open}
+            MenuListProps={{
+              'aria-labelledby': 'resources-button',
+            }}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+          >
+            <MenuItem onClick={handleClose}>
+              <Link href='/typography'>Link to typography</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link href='/muibuttons'>Link to button</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link href='/groupbuttons'>Link to Group buttons</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link href='/togglebutton'>Link to Toggle-button</Link>
+            </MenuItem>
+          </Menu>
+
+          <Menu
+            PaperProps={{
+              sx: {
+                backgroundColor: bgColor,
+                border: '1px solid',
+                borderColor: borderColor,
+                color: borderColor,
+              },
+            }}
+            anchorEl={anchorElTwo}
+            open={openTwo}
+            MenuListProps={{
+              'aria-labelledby': 'resources-buttonTwo',
+            }}
+            onClose={handleCloseTwo}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+          >
+            <MenuItem onClick={handleCloseTwo}>
+              <Link href='/textfield'>Link to Text-field</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseTwo}>
+              <Link href='/select'>Link to Select</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseTwo}>
+              <Link href='/radiobutton'>Link to RadioButton</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseTwo}>
+              <Link href='/checkbox'>Link to Checkbox</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseTwo}>
+              <Link href='/rating'>Link to Rating</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseTwo}>
+              <Link href='/autocomplete'>Link to Autocomplete</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseTwo}>
+              <Link href='/calculator'>Link to Calculator</Link>
+            </MenuItem>
+          </Menu>
+
+          <Menu
+            PaperProps={{
+              sx: {
+                backgroundColor: bgColor,
+                border: '1px solid',
+                borderColor: borderColor,
+                color: borderColor,
+              },
+            }}
+            anchorEl={anchorElThree}
+            open={openThree}
+            MenuListProps={{
+              'aria-labelledby': 'resources-buttonThree',
+            }}
+            onClose={handleCloseThree}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+          >
+            <MenuItem onClick={handleCloseThree}>
+              <Link href='/box'>Link to Box and Grid</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseThree}>
+              <Link href='/accordion'>Link to Accordion</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseThree}>
+              <Link href='/card'>Link to Card</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseThree}>
+              <Link href='/imagelist'>Link to ImageList</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseThree}>
+              <Link href='/navbar'>Link to Navbar</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseThree}>
+              <Link href='/drawer'>Link to Drawer</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseThree}>
+              <Link href='/speeddial'>Link to SpeedDial</Link>
+            </MenuItem>
+          </Menu>
+        </Toolbar>
+      ) : (
+        <Toolbar className='columnNavbar'>
+          <IconButton
+            onClick={() => setHide(!hide)}
+            size='large'
+            edge='start'
             color='inherit'
-            id='resources-button'
-            onClick={handleClick}
-            // in this case if boolen (open) is true so handle it with resources-menu if no set it to undefined
-            aria-controls={open ? 'resources-menu' : undefined}
-            aria-haspopup='true'
-            aria-expanded={open ? 'true' : undefined}
-            endIcon={<KeyboardArrowDown />}
+            aria-label='logo'
           >
-            Interactive section
-          </Button>
-
-          <Button
-            color='inherit'
-            id='resources-buttonTwo'
-            onClick={handleClickTwo}
-            // in this case if boolen (open) is true so handle it with resources-menu if no set it to undefined
-            aria-controls={openTwo ? 'resources-menuTwo' : undefined}
-            aria-haspopup='true'
-            aria-expanded={openTwo ? 'true' : undefined}
-            endIcon={<KeyboardArrowDown />}
-          >
-            Inputs section
-          </Button>
-
-          <Button
-            color='inherit'
-            id='resources-buttonThree'
-            onClick={handleClickThree}
-            // in this case if boolen (open) is true so handle it with resources-menu if no set it to undefined
-            aria-controls={openThree ? 'resources-menuThree' : undefined}
-            aria-haspopup='true'
-            aria-expanded={openThree ? 'true' : undefined}
-            endIcon={<KeyboardArrowDown />}
-          >
-            Layout section
-          </Button>
-        </Stack>
-
-        <Menu
-          PaperProps={{
-            sx: {
-              backgroundColor: bgColor,
-              border: '1px solid',
-              borderColor: borderColor,
-              color: borderColor,
-            },
-          }}
-          id='resources-menu'
-          anchorEl={anchorEl}
-          open={open}
-          MenuListProps={{
-            'aria-labelledby': 'resources-button',
-          }}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
-        >
-          <MenuItem onClick={handleClose}>
-            <Link href='/typography'>Link to typography</Link>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Link href='/muibuttons'>Link to button</Link>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Link href='/groupbuttons'>Link to Group buttons</Link>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Link href='/togglebutton'>Link to Toggle-button</Link>
-          </MenuItem>
-        </Menu>
-
-        <Menu
-          PaperProps={{
-            sx: {
-              backgroundColor: bgColor,
-              border: '1px solid',
-              borderColor: borderColor,
-              color: borderColor,
-            },
-          }}
-          anchorEl={anchorElTwo}
-          open={openTwo}
-          MenuListProps={{
-            'aria-labelledby': 'resources-buttonTwo',
-          }}
-          onClose={handleCloseTwo}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
-        >
-          <MenuItem onClick={handleCloseTwo}>
-            <Link href='/textfield'>Link to Text-field</Link>
-          </MenuItem>
-          <MenuItem onClick={handleCloseTwo}>
-            <Link href='/select'>Link to Select</Link>
-          </MenuItem>
-          <MenuItem onClick={handleCloseTwo}>
-            <Link href='/radiobutton'>Link to RadioButton</Link>
-          </MenuItem>
-          <MenuItem onClick={handleCloseTwo}>
-            <Link href='/checkbox'>Link to Checkbox</Link>
-          </MenuItem>
-          <MenuItem onClick={handleCloseTwo}>
-            <Link href='/rating'>Link to Rating</Link>
-          </MenuItem>
-          <MenuItem onClick={handleCloseTwo}>
-            <Link href='/autocomplete'>Link to Autocomplete</Link>
-          </MenuItem>
-          <MenuItem onClick={handleCloseTwo}>
-            <Link href='/calculator'>Link to Calculator</Link>
-          </MenuItem>
-        </Menu>
-
-        <Menu
-          PaperProps={{
-            sx: {
-              backgroundColor: bgColor,
-              border: '1px solid',
-              borderColor: borderColor,
-              color: borderColor,
-            },
-          }}
-          anchorEl={anchorElThree}
-          open={openThree}
-          MenuListProps={{
-            'aria-labelledby': 'resources-buttonThree',
-          }}
-          onClose={handleCloseThree}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
-        >
-          <MenuItem onClick={handleCloseThree}>
-            <Link href='/box'>Link to Box and Grid</Link>
-          </MenuItem>
-          <MenuItem onClick={handleCloseThree}>
-            <Link href='/accordion'>Link to Accordion</Link>
-          </MenuItem>
-          <MenuItem onClick={handleCloseThree}>
-            <Link href='/card'>Link to Card</Link>
-          </MenuItem>
-          <MenuItem onClick={handleCloseThree}>
-            <Link href='/imagelist'>Link to ImageList</Link>
-          </MenuItem>
-          <MenuItem onClick={handleCloseThree}>
-            <Link href='/navbar'>Link to Navbar</Link>
-          </MenuItem>
-          <MenuItem onClick={handleCloseThree}>
-            <Link href='/drawer'>Link to Drawer</Link>
-          </MenuItem>
-        </Menu>
-      </Toolbar>
+            <VisibilityOffIcon />
+          </IconButton>
+          <Typography variant='h3' component='div' sx={{ flexGrow: 1 }}>
+            PokemonApp
+          </Typography>
+        </Toolbar>
+      )}
     </AppBar>
   );
 }

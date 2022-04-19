@@ -10,7 +10,7 @@ export default function Home() {
         style={{
           marginLeft: '150px',
           marginRight: '150px',
-          marginTop: '100px',
+          paddingTop: '200px',
         }}
       >
         Hello this is site for learning Material UI with using Next.js and

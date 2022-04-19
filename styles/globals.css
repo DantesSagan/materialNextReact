@@ -19,8 +19,33 @@ a {
   animation: spin 1s linear;
 }
 
-
 .spinner {
   transform: rotate(180deg);
   animation: spin 1s linear;
+}
+
+@media only screen and (max-width: 850px) {
+  .columnNavbar {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .columnNavbar {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .columnNavbar {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .columnNavbar {
+    display: flex;
+    flex-direction: column;
+  }
 }
