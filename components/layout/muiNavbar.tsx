@@ -60,6 +60,8 @@ export default function NavbarIndexTop({ checked, setChecked }) {
   const borderColor = checked ? 'black' : 'white';
   const bgColor = checked ? 'white' : 'black';
 
+  const display = hide ? 'row' : 'column';
+
   return (
     <AppBar
       style={{
@@ -82,7 +84,7 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             <Visibility />
           </IconButton>
           <Typography variant='h3' component='div' sx={{ flexGrow: 1 }}>
-            PokemonApp
+            Next&&MaterialUI
           </Typography>
           <Button
             variant='contained'
@@ -96,9 +98,9 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             {checked ? 'White' : 'Black'}
           </Button>
 
-          <Stack direction='row' spacing={2} className='columnNavbar'>
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
             <Button
-              variant='contained'
+              color='inherit'
               style={{
                 backgroundColor: navBgColor,
                 color: navTextColor,
@@ -293,7 +295,7 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             <VisibilityOffIcon />
           </IconButton>
           <Typography variant='h3' component='div' sx={{ flexGrow: 1 }}>
-            PokemonApp
+            Next&&MaterialUI
           </Typography>
         </Toolbar>
       )}

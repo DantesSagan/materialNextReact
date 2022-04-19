@@ -24,8 +24,16 @@ a {
   animation: spin 1s linear;
 }
 
+.columnInner {
+  flex-direction: row;
+}
+
 @media only screen and (max-width: 850px) {
   .columnNavbar {
+    display: flex;
+    flex-direction: column;
+  }
+  .columnInner {
     display: flex;
     flex-direction: column;
   }
@@ -36,15 +44,27 @@ a {
     display: flex;
     flex-direction: column;
   }
+  .columnInner {
+    display: flex;
+    flex-direction: column;
+  }
 }
 @media only screen and (max-width: 375px) {
   .columnNavbar {
     display: flex;
     flex-direction: column;
   }
+  .columnInner {
+    display: flex;
+    flex-direction: column;
+  }
 }
 @media only screen and (max-width: 320px) {
   .columnNavbar {
+    display: flex;
+    flex-direction: column;
+  }
+  .columnInner {
     display: flex;
     flex-direction: column;
   }
