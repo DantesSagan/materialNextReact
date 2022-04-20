@@ -2,7 +2,7 @@ import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import { Button, Rating, Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
-export default function RatingIndex({ rating }) {
+export default function RatingIndex() {
   const [array, setArray] = useState([]);
 
   useEffect(() => {

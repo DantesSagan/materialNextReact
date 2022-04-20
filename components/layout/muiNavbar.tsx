@@ -29,6 +29,9 @@ export default function NavbarIndexTop({ checked, setChecked }) {
   const [anchorElThree, setAnchorElThree] = useState<null | HTMLElement>(null);
   const openThree = Boolean(anchorElThree);
 
+const [anchorElFour, setAnchorElFour] = useState<null | HTMLElement>(null);
+const openFour = Boolean(anchorElFour);
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -50,6 +53,13 @@ export default function NavbarIndexTop({ checked, setChecked }) {
     setAnchorElThree(null);
   };
 
+ const handleClickFour = (event: React.MouseEvent<HTMLButtonElement>) => {
+   setAnchorElFour(event.currentTarget);
+ };
+ const handleCloseFour = () => {
+   setAnchorElFour(null);
+ };
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
   };
@@ -59,8 +69,6 @@ export default function NavbarIndexTop({ checked, setChecked }) {
 
   const borderColor = checked ? 'black' : 'white';
   const bgColor = checked ? 'white' : 'black';
-
-  const display = hide ? 'row' : 'column';
 
   return (
     <AppBar
@@ -147,6 +155,18 @@ export default function NavbarIndexTop({ checked, setChecked }) {
               endIcon={<KeyboardArrowDown />}
             >
               Layout section
+            </Button>
+            <Button
+              color='inherit'
+              id='resources-buttonThree'
+              onClick={handleClickFour}
+              // in this case if boolen (open) is true so handle it with resources-menu if no set it to undefined
+              aria-controls={openThree ? 'resources-menuThree' : undefined}
+              aria-haspopup='true'
+              aria-expanded={openThree ? 'true' : undefined}
+              endIcon={<KeyboardArrowDown />}
+            >
+              Data section
             </Button>
           </Stack>
 
@@ -280,6 +300,38 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             </MenuItem>
             <MenuItem onClick={handleCloseThree}>
               <Link href='/speeddial'>Link to SpeedDial</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseThree}>
+              <Link href='/bottomnavigation'>Link to Bottom Navigation</Link>
+            </MenuItem>
+          </Menu>
+
+          <Menu
+            PaperProps={{
+              sx: {
+                backgroundColor: bgColor,
+                border: '1px solid',
+                borderColor: borderColor,
+                color: borderColor,
+              },
+            }}
+            anchorEl={anchorElFour}
+            open={openFour}
+            MenuListProps={{
+              'aria-labelledby': 'resources-buttonThree',
+            }}
+            onClose={handleCloseFour}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+          >
+            <MenuItem onClick={handleCloseFour}>
+              <Link href='/avatars'>Link to Avatars</Link>
             </MenuItem>
           </Menu>
         </Toolbar>
