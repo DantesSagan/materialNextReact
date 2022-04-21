@@ -7,10 +7,17 @@ export default function BottomNavigationindex({ checked }) {
   const [color, setColor] = useState(true);
 
   const changeColor = checked ? 'blue' : 'black';
+  const bgColor = checked ? 'white' : 'black';
+  const iconColor = checked ? 'black' : 'white';
 
   return (
     <BottomNavigation
-      sx={{ width: '100%', position: 'fixed', bottom: 80 }}
+      sx={{
+        width: '100%',
+        position: 'fixed',
+        bottom: 80,
+        backgroundColor: bgColor,
+      }}
       value={value}
       onChange={(_event, newValue) => {
         setValue(newValue);
@@ -19,10 +26,19 @@ export default function BottomNavigationindex({ checked }) {
     >
       <BottomNavigationAction
         label='home'
-        icon={<Home sx={{ color: changeColor }} />}
+        sx={{ color: iconColor }}
+        icon={<Home />}
       />
-      <BottomNavigationAction label='home' icon={<Favorite />} />
-      <BottomNavigationAction label='home' icon={<Person />} />
+      <BottomNavigationAction
+        sx={{ color: iconColor }}
+        label='home'
+        icon={<Favorite />}
+      />
+      <BottomNavigationAction
+        sx={{ color: iconColor }}
+        label='home'
+        icon={<Person />}
+      />
     </BottomNavigation>
   );
 }

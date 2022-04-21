@@ -333,6 +333,9 @@ const openFour = Boolean(anchorElFour);
             <MenuItem onClick={handleCloseFour}>
               <Link href='/avatars'>Link to Avatars</Link>
             </MenuItem>
+            <MenuItem onClick={handleCloseFour}>
+              <Link href='/badge'>Link to Badge</Link>
+            </MenuItem>
           </Menu>
         </Toolbar>
       ) : (
