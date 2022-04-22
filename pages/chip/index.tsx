@@ -33,7 +33,7 @@ export default function ChipIndex() {
           return (
             <div key={chip}>
               <Chip
-              color='secondary'
+                color='secondary'
                 key={chip}
                 label={chip}
                 onDelete={() => handleDelete(chip)}

@@ -3,7 +3,7 @@ import Footer from '../components/layout/footer';
 import Navbar from '../components/layout/navbar';
 
 import '../styles/globals.css';
-import '../styles/navbar.css';
+// import '../styles/navbar.css';
 import NavbarIndexTop from '../components/layout/muiNavbar';
 
 export default function MyApp({ Component, pageProps }) {

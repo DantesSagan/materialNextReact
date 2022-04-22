@@ -69,3 +69,20 @@ a {
     flex-direction: column;
   }
 }
+
+.mainButton {
+  display: inline-block;
+  padding: 8px;
+}
+
+.dropButton {
+  display: none;
+  position: absolute;
+  min-width: 50px;
+}
+
+.mainButton:hover .dropButton {
+  position: absolute;
+  transition-duration: 300ms;
+  display: inline-block;
+}
