@@ -3,8 +3,10 @@ import { Stack, Badge, Typography, Box } from '@mui/material';
 import React from 'react';
 
 export default function BadgeIndex({ checked }) {
+
   const inputText = checked ? 'black' : 'white';
   const bgHover = checked ? 'red' : 'gray';
+  
   return (
     <Stack spacing={2} alignItems='center' textAlign='center'>
       {/* If you have email and not reading massages you may be need badge 

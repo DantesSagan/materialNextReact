@@ -33,7 +33,7 @@ export default function TooltipIndex({ checked }) {
         Tooltip with using MUI and Tooltip component {` =>`} IconButton {` =>`}{' '}
         DeleteIcon
       </Typography>
-      <Tooltip title='delete' placement='right' arrow>
+      <Tooltip title='delete' placement='right' arrow enterDelay={500} leaveDelay={300} >
         <IconButton>
           <Delete sx={{ color: textColor }} />
         </IconButton>

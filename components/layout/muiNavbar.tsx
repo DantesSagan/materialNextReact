@@ -339,6 +339,12 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             <MenuItem onClick={handleCloseFour}>
               <Link href='/chip'>Link to Chip</Link>
             </MenuItem>
+            <MenuItem onClick={handleCloseFour}>
+              <Link href='/tooltip'>Link to Tooltip</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseFour}>
+              <Link href='/table'>Link to Table</Link>
+            </MenuItem>
           </Menu>
         </Toolbar>
       ) : (
