@@ -29,8 +29,8 @@ export default function NavbarIndexTop({ checked, setChecked }) {
   const [anchorElThree, setAnchorElThree] = useState<null | HTMLElement>(null);
   const openThree = Boolean(anchorElThree);
 
-const [anchorElFour, setAnchorElFour] = useState<null | HTMLElement>(null);
-const openFour = Boolean(anchorElFour);
+  const [anchorElFour, setAnchorElFour] = useState<null | HTMLElement>(null);
+  const openFour = Boolean(anchorElFour);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -53,12 +53,12 @@ const openFour = Boolean(anchorElFour);
     setAnchorElThree(null);
   };
 
- const handleClickFour = (event: React.MouseEvent<HTMLButtonElement>) => {
-   setAnchorElFour(event.currentTarget);
- };
- const handleCloseFour = () => {
-   setAnchorElFour(null);
- };
+  const handleClickFour = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorElFour(event.currentTarget);
+  };
+  const handleCloseFour = () => {
+    setAnchorElFour(null);
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
@@ -335,6 +335,9 @@ const openFour = Boolean(anchorElFour);
             </MenuItem>
             <MenuItem onClick={handleCloseFour}>
               <Link href='/badge'>Link to Badge</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseFour}>
+              <Link href='/chip'>Link to Chip</Link>
             </MenuItem>
           </Menu>
         </Toolbar>
