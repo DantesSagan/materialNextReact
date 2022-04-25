@@ -14,14 +14,11 @@ import {
 } from '@mui/material';
 
 import { tableData } from '../../components/data/tableData';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function TableIndex() {
-  const [table, setTable] = useState(
-    tableData.map((row) => {
-      return row;
-    })
-  );
+  const [table, setTable] = useState([]);
 
   const [firstName, setFirstName] = useState<string | null>(null);
   const [lastName, setLastName] = useState<string | null>(null);
@@ -33,17 +30,103 @@ export default function TableIndex() {
   const [del, setDel] = useState<boolean>(false);
   const [add, setAdd] = useState<boolean>(true);
 
-  const handleDelete = (rowToDelete: number) => {
-    setTable((data) => data.filter((rowID) => rowID.id !== rowToDelete));
+  async function getDataDB() {
+    const response = await fetch('http://localhost:4000/tableData');
+    const data = await response.json();
+    setTable(data);
+    console.log(data);
+    return data;
+  }
+
+  useEffect(() => {
+    getDataDB();
+  }, []);
+
+  // API POST REQUEST
+  const submitData = async (dataArr: {}) => {
+    const response = await fetch('http://localhost:4000/tableData', {
+      method: 'POST',
+      body: JSON.stringify(dataArr),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+    return data;
   };
 
-  const handleEditFirstName = (rowToEdit: string, rowFirstName: string) => {
-    Object.keys(table).map((item) => {
-      rowFirstName === table[item].first_name
-        ? (table[item].first_name = rowToEdit)
-        : null;
+  // API DELETE REQUEST
+  const deleteComment = async (rowToDelete: number) => {
+    const response = await fetch('http://localhost:4000/tableData', {
+      method: 'DELETE',
+      body: JSON.stringify(table[rowToDelete]),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
+    const data = await response.json();
+    console.log(data);
+
+    return data;
+  };
+
+  // API PATCH METHOD
+  const patchComment = async (first_name: string) => {
+    await fetch('http://localhost:4000/tableData', {
+      method: 'PATCH',
+      body: JSON.stringify(first_name),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => console.log(data));
+  };
+
+  const handleEditFirstName = (
+    rowToEdit: string | null,
+    rowFirstName: string | null
+  ) => {
     setClose(!close);
+    return Object.keys(table).map((item) => {
+      // const datas = {
+      //   id: table[item].id,
+      //   first_name: (table[item].first_name = rowToEdit),
+      //   last_name: table[item].last_name,
+      //   email: table[item].email,
+      //   gender: table[item].gender,
+      //   ip_address: table[item].ip_address,
+      // };
+      return rowFirstName === table[item].first_name
+        ? patchComment((table[item].first_name = rowToEdit))
+        : console.log('error');
+    });
+  };
+
+  const handleChange = (newValue: string | null) => {
+    submitData(newValue);
+    getDataDB();
+  };
+
+  const handleDelete = (rowToDelete: number) => {
+    const index = table.findIndex((itemID) => {
+      return itemID.id === rowToDelete;
+    });
+    console.log(index);
+
+    const delData = setTable((data) =>
+      data.filter((rowID) => {
+        rowID.id !== rowToDelete;
+      })
+    );
+
+    deleteComment(index);
+    getDataDB();
+
+    return delData;
   };
 
   const handleEditLastName = (rowToEdit: string, rowLastName: string) => {
@@ -55,24 +138,25 @@ export default function TableIndex() {
     setClose(!close);
   };
 
-   const handleEditEmail = (rowToEdit: string, rowEmail: string) => {
-     Object.keys(table).map((item) => {
-       rowEmail === table[item].email
-         ? (table[item].email = rowToEdit)
-         : null;
-     });
-     setClose(!close);
-   };
+  const handleEditEmail = (rowToEdit: string, rowEmail: string) => {
+    Object.keys(table).map((item) => {
+      rowEmail === table[item].email ? (table[item].email = rowToEdit) : null;
+    });
+    setClose(!close);
+  };
 
   const handleAdd = () => {
+    const idIndex: string = table[0].id;
+    const idData: number = idIndex.length + 1;
     const newData = {
-      id: Date.now(),
+      id: idData,
       first_name: firstName,
       last_name: lastName,
       email: email,
       gender: gender,
       ip_address: ip,
     };
+    submitData(newData);
     table.push(newData);
   };
 
@@ -273,9 +357,7 @@ export default function TableIndex() {
                         InputProps={{
                           endAdornment: (
                             <Button
-                              onClick={() =>
-                                handleEditEmail(email, row.email)
-                              }
+                              onClick={() => handleEditEmail(email, row.email)}
                             >
                               edit
                             </Button>
