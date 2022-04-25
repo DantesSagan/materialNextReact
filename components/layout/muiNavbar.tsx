@@ -345,6 +345,9 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             <MenuItem onClick={handleCloseFour}>
               <Link href='/table'>Link to Table</Link>
             </MenuItem>
+            <MenuItem onClick={handleCloseFour}>
+              <Link href='/tablejson'>Link to TableJSON</Link>
+            </MenuItem>
           </Menu>
         </Toolbar>
       ) : (
