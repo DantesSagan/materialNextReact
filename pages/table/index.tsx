@@ -33,6 +33,8 @@ export default function TableIndex() {
   const [del, setDel] = useState<boolean>(false);
   const [add, setAdd] = useState<boolean>(true);
 
+console.log(table)
+
   const handleDelete = (rowToDelete: number) => {
     setTable((data) => data.filter((rowID) => rowID.id !== rowToDelete));
   };
