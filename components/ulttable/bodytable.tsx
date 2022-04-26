@@ -18,6 +18,7 @@ export default function BodyTable({
   del,
   table,
   close,
+  defaultSort,
   setEmail,
   setGender,
   setDel,
@@ -26,6 +27,7 @@ export default function BodyTable({
   setLastName,
   setIp,
   setClose,
+  setDefaultSort,
   handleAdd,
   handleDelete,
   handleEditFirstName,
@@ -33,9 +35,20 @@ export default function BodyTable({
   handleEditEmail,
   handleEditGender,
   handleEditIp,
+  getDataDB,
 }) {
   return (
     <TableBody>
+      <Button
+        variant='contained'
+        color='info'
+        onClick={() => {
+          setDefaultSort(!defaultSort);
+          getDataDB();
+        }}
+      >
+        Default sort
+      </Button>
       {add ? (
         <Button
           onClick={() => setAdd(!add)}

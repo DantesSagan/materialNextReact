@@ -1,4 +1,6 @@
 export default function IndexApiTable({ getDataDB }) {
+
+
   // API POST REQUEST
   const submitData = async (dataArr: {}) => {
     const response = await fetch('http://localhost:4000/tableData', {
@@ -113,7 +115,6 @@ export default function IndexApiTable({ getDataDB }) {
     getDataDB();
   };
 
-  
   return {
     submitData,
     deleteData,
