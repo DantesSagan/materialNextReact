@@ -32,6 +32,9 @@ export default function NavbarIndexTop({ checked, setChecked }) {
   const [anchorElFour, setAnchorElFour] = useState<null | HTMLElement>(null);
   const openFour = Boolean(anchorElFour);
 
+  const [anchorElFifth, setAnchorElFifth] = useState<null | HTMLElement>(null);
+  const openFifth = Boolean(anchorElFifth);
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -58,6 +61,13 @@ export default function NavbarIndexTop({ checked, setChecked }) {
   };
   const handleCloseFour = () => {
     setAnchorElFour(null);
+  };
+
+  const handleClickFifth = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorElFifth(event.currentTarget);
+  };
+  const handleCloseFifth = () => {
+    setAnchorElFifth(null);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -156,17 +166,30 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             >
               Layout section
             </Button>
+
             <Button
               color='inherit'
-              id='resources-buttonThree'
+              id='resources-buttonFour'
               onClick={handleClickFour}
               // in this case if boolen (open) is true so handle it with resources-menu if no set it to undefined
-              aria-controls={openThree ? 'resources-menuThree' : undefined}
+              aria-controls={openFour ? 'resources-menuFour' : undefined}
               aria-haspopup='true'
-              aria-expanded={openThree ? 'true' : undefined}
+              aria-expanded={openFour ? 'true' : undefined}
               endIcon={<KeyboardArrowDown />}
             >
               Data section
+            </Button>
+            <Button
+              color='inherit'
+              id='resources-buttonFifth'
+              onClick={handleClickFifth}
+              // in this case if boolen (open) is true so handle it with resources-menu if no set it to undefined
+              aria-controls={openFifth ? 'resources-menuFifth' : undefined}
+              aria-haspopup='true'
+              aria-expanded={openFifth ? 'true' : undefined}
+              endIcon={<KeyboardArrowDown />}
+            >
+              ETC
             </Button>
           </Stack>
 
@@ -347,6 +370,38 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             </MenuItem>
             <MenuItem onClick={handleCloseFour}>
               <Link href='/tablejson'>Link to TableJSON</Link>
+            </MenuItem>
+          </Menu>
+
+          <Menu
+            PaperProps={{
+              sx: {
+                backgroundColor: bgColor,
+                border: '1px solid',
+                borderColor: borderColor,
+                color: borderColor,
+              },
+            }}
+            anchorEl={anchorElFifth}
+            open={openFifth}
+            MenuListProps={{
+              'aria-labelledby': 'resources-buttonThree',
+            }}
+            onClose={handleCloseFifth}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+          >
+            <MenuItem onClick={handleCloseFifth}>
+              <Link href='/alert'>Link to Alert</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseFifth}>
+              <Link href='/snackbars'>Link to Snackbars</Link>
             </MenuItem>
           </Menu>
         </Toolbar>

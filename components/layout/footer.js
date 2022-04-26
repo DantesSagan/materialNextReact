@@ -1,4 +1,4 @@
-import { Image } from '@mui/icons-material';
+import { Button } from '@mui/material';
 import React from 'react';
 import styles from '../../styles/Home.module.css';
 
@@ -26,10 +26,10 @@ export default function Footer({ checked, setChecked }) {
           target='_blank'
           rel='noopener noreferrer'
         >
-          Powered by @DantesSagan
-          <span className={styles.logo}>
-            <Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
-          </span>
+          Powered by{' '}
+          <Button>
+            <a href='https://github.com/DantesSagan'>@DantesSagan</a>
+          </Button>
         </a>
       </div>
     </footer>
