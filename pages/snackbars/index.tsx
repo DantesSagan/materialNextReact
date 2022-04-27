@@ -16,7 +16,7 @@ export default function SnackBarsIndex() {
     reason?: string
   ) => {
     if (reason === 'clickaway') {
-      return;
+      return reason;
     }
     setOpen(!open);
   };

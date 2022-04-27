@@ -1,4 +1,4 @@
-export default function IndexApiTable({ getDataDB }) {
+export default function IndexApiTable({ getDataDB, setLoading }) {
 
 
   // API POST REQUEST
@@ -12,7 +12,7 @@ export default function IndexApiTable({ getDataDB }) {
     });
     const data = await response.json();
     console.log(data);
-    getDataDB();
+    getDataDB().then(() => setLoading(false));
     return data;
   };
 
@@ -26,7 +26,7 @@ export default function IndexApiTable({ getDataDB }) {
     );
     const data = await response.json();
     console.log(data);
-    getDataDB();
+    getDataDB().then(() => setLoading(false));
     return data;
   };
 
@@ -49,7 +49,7 @@ export default function IndexApiTable({ getDataDB }) {
         return response.json();
       })
       .then((data) => console.log(data));
-    getDataDB();
+    getDataDB().then(() => setLoading(false));
   };
 
   // API PATCH METHOD LAST NAME
@@ -65,7 +65,7 @@ export default function IndexApiTable({ getDataDB }) {
         return response.json();
       })
       .then((data) => console.log(data));
-    getDataDB();
+    getDataDB().then(() => setLoading(false));
   };
 
   // API PATCH METHOD EMAIL
@@ -81,7 +81,7 @@ export default function IndexApiTable({ getDataDB }) {
         return response.json();
       })
       .then((data) => console.log(data));
-    getDataDB();
+    getDataDB().then(() => setLoading(false));
   };
 
   // API PATCH METHOD GENDER
@@ -97,7 +97,7 @@ export default function IndexApiTable({ getDataDB }) {
         return response.json();
       })
       .then((data) => console.log(data));
-    getDataDB();
+    getDataDB().then(() => setLoading(false));
   };
   // API PATCH METHOD IP
   const patchIp = async (ip_address: string | null, id: number | null) => {
@@ -112,7 +112,7 @@ export default function IndexApiTable({ getDataDB }) {
         return response.json();
       })
       .then((data) => console.log(data));
-    getDataDB();
+    getDataDB().then(() => setLoading(false));
   };
 
   return {

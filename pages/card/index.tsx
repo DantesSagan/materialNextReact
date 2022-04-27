@@ -8,6 +8,8 @@ import {
   CardActions,
   Button,
   CardMedia,
+  CircularProgress,
+  Snackbar,
 } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -18,6 +20,8 @@ export default function CardIndex() {
     'https://source.unsplash.com/random'
   );
   const [array, setArray] = useState<[] | null>([]);
+  const [open, setOpen] = useState(false);
+  const [closeInt, setCloseInt] = useState(false)
 
   const convert: any | [] = array;
 
@@ -44,24 +48,65 @@ export default function CardIndex() {
 
   // set to start setInterval to display random generated image and after 5 seconds will be refresh to new image
   const startInterval = () => {
+    setOpen(!open);
     setTurn(false);
     ref.current = setInterval(() => {
       getData();
       console.log('Та-да!');
     }, 10000);
   };
-  // clear interval of images to stop 
+  // clear interval of images to stop
   const clearInt = () => {
     console.log('Clear Interval clicked');
     clearInterval(ref.current);
+      setCloseInt(!closeInt);
   };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return reason;
+    }
+    setOpen(!open);
+  };
+
+const handleCloseInt = (event?: React.SyntheticEvent | Event, reason?: string) => {
+  if (reason === 'clickaway') {
+    return reason;
+  }
+  setCloseInt(!closeInt);
+};
 
   return (
     <Stack alignItems='center'>
       <Box width='300px'>
+        <Snackbar
+          message='Generate new image every 10 sec!'
+          autoHideDuration={4000}
+          open={open}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+        />
+        <Snackbar
+          message='Cancel generate!'
+          autoHideDuration={4000}
+          open={closeInt}
+          onClose={handleCloseInt}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+        />
         <Card>
           {loading ? (
-            <Typography variant='body1'>Loading...</Typography>
+            <Typography variant='h1' component='div'>
+              <CircularProgress color='info' />
+            </Typography>
           ) : (
             <div>
               {turn ? (

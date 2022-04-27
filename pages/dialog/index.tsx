@@ -15,7 +15,6 @@ export default function DialogIndex() {
   const [open, setOpen] = useState<boolean>(false);
   const { openSecond, setOpenSecond } = StatesFN();
 
-  
   return (
     <>
       <Typography variant='h1'>Dialog Main</Typography>

@@ -8,6 +8,7 @@ import {
   TextField,
   Box,
   Snackbar,
+  LinearProgress,
 } from '@mui/material';
 
 import React, { useEffect, useState } from 'react';
@@ -70,6 +71,10 @@ export default function TableIndex() {
   const [openSnack, setOpenSnack] = useState(false);
   const [snackArray, setSnackArray] = useState<any>([]);
 
+  // LOADING
+
+  const [loading, setLoading] = useState<boolean>(true);
+
   const {
     sortIDAscData,
     sortIDDescData,
@@ -95,7 +100,9 @@ export default function TableIndex() {
   }
 
   useEffect(() => {
-    defaultSort ? getDataDB() : getDataDB();
+    defaultSort
+      ? getDataDB().then(() => setLoading(false))
+      : getDataDB().then(() => setLoading(false));
   }, []);
 
   const {
@@ -106,7 +113,7 @@ export default function TableIndex() {
     patchEmail,
     patchGender,
     patchIp,
-  } = IndexApiTable({ getDataDB });
+  } = IndexApiTable({ getDataDB, setLoading });
 
   const {
     handleEditFirstName,
@@ -214,11 +221,11 @@ export default function TableIndex() {
 
   console.log(snackArray);
   return (
-    <Stack alignItems={'center'}>
-      <Stack  display='flex' flexDirection='row'>
+    <Stack>
+      <Stack display='flex' flexDirection='row'>
         {' '}
         <Snackbar
-          message={`Table changed successfully! ${snArrayCheck}`}
+          message={`Table changed successfully! Value = ${snArrayCheck}`}
           autoHideDuration={4000}
           open={openSnack}
           onClose={handleCloseSnack}
@@ -228,7 +235,7 @@ export default function TableIndex() {
           }}
         />
         {/* SORT BY GREATER THAN OR EQUAL TO */}
-        <Box >
+        <Box>
           {sortGTE ? (
             <Button
               color='success'
@@ -372,108 +379,116 @@ export default function TableIndex() {
             Default sort
           </Button>
         </Box>
-      </Stack>
-      <TableContainer component={Paper}>
-        {' '}
-        {/* START OF TABLE */}
-        <Table aria-label='simple table'>
-          {close ? null : (
-            <Button
-              color='error'
-              variant='contained'
-              onClick={() => setClose(!close)}
-            >
-              Cancel
-            </Button>
-          )}
+      </Stack>{' '}
+      {loading ? (
+        <LinearProgress color='success' aria-describedby='dialog-description' />
+      ) : (
+        <TableContainer component={Paper}>
+          {' '}
+          {/* START OF TABLE */}
+          <Table
+            aria-label='simple table'
+            aria-busy={true}
+            id='dialog-description'
+          >
+            {close ? null : (
+              <Button
+                color='error'
+                variant='contained'
+                onClick={() => setClose(!close)}
+              >
+                Cancel
+              </Button>
+            )}
 
-          {/* HEAD */}
-          <HeadTable
-            handleClickTwo={handleClickTwo}
-            openTwo={openTwo}
-            anchorElTwo={anchorElTwo}
-            handleCloseTwo={handleCloseTwo}
-            sortID={sortID}
-            setSortID={setSortID}
-            sortIDDescData={sortIDDescData}
-            sortIDAscData={sortIDAscData}
-            handleClick={handleClick}
-            open={open}
-            anchorEl={anchorEl}
-            handleClose={handleClose}
-            sortFN={sortFN}
-            setSortFN={setSortFN}
-            sortFirstNameDescData={sortFirstNameDescData}
-            sortFirstNameAscData={sortFirstNameAscData}
-            handleClickThree={handleClickThree}
-            openThree={openThree}
-            anchorElThree={anchorElThree}
-            handleCloseThree={handleCloseThree}
-            sortLN={sortLN}
-            setSortLN={setSortLN}
-            sortLastNameDescData={sortLastNameDescData}
-            sortLastNameAscData={sortLastNameAscData}
-            handleClickFour={handleClickFour}
-            openFour={openFour}
-            anchorElFour={anchorElFour}
-            handleCloseFour={handleCloseFour}
-            sortEmail={sortEmail}
-            setSortEmail={setSortEmail}
-            sortEmailDescData={sortEmailDescData}
-            sortEmailAscData={sortEmailAscData}
-            handleClickFifth={handleClickFifth}
-            openFifth={openFifth}
-            anchorElFifth={anchorElFifth}
-            handleCloseFifth={handleCloseFifth}
-            sortGender={sortGender}
-            setSortGender={setSortGender}
-            sortGenderDescData={sortGenderDescData}
-            sortGenderAscData={sortGenderAscData}
-            handleClickSix={handleClickSix}
-            openSix={openSix}
-            anchorElSix={anchorElSix}
-            handleCloseSix={handleCloseSix}
-            sortIP={sortIP}
-            setSortIP={setSortIP}
-            sortIPDescData={sortIPDescData}
-            sortIPAscData={sortIPAscData}
-          />
-          {/* BODY */}
-          <BodyTable
-            add={add}
-            firstName={firstName}
-            lastName={lastName}
-            email={email}
-            gender={gender}
-            ip={ip}
-            del={del}
-            table={table}
-            close={close}
-            sortGTE={sortGTE}
-            sortGTEData={sortGTEData}
-            defaultSort={defaultSort}
-            setEmail={setEmail}
-            setGender={setGender}
-            setDel={setDel}
-            setAdd={setAdd}
-            setFirstName={setFirstName}
-            setLastName={setLastName}
-            setIp={setIp}
-            setClose={setClose}
-            setDefaultSort={setDefaultSort}
-            setSortGTE={setSortGTE}
-            handleAdd={handleAdd}
-            handleDelete={handleDelete}
-            handleEditFirstName={handleEditFirstName}
-            handleEditLastName={handleEditLastName}
-            handleEditEmail={handleEditEmail}
-            handleEditGender={handleEditGender}
-            handleEditIp={handleEditIp}
-            getDataDB={getDataDB}
-            snackArray={snackArray}
-          />
-        </Table>
-      </TableContainer>
+            {/* HEAD */}
+            <HeadTable
+              handleClickTwo={handleClickTwo}
+              openTwo={openTwo}
+              anchorElTwo={anchorElTwo}
+              handleCloseTwo={handleCloseTwo}
+              sortID={sortID}
+              setSortID={setSortID}
+              sortIDDescData={sortIDDescData}
+              sortIDAscData={sortIDAscData}
+              handleClick={handleClick}
+              open={open}
+              anchorEl={anchorEl}
+              handleClose={handleClose}
+              sortFN={sortFN}
+              setSortFN={setSortFN}
+              sortFirstNameDescData={sortFirstNameDescData}
+              sortFirstNameAscData={sortFirstNameAscData}
+              handleClickThree={handleClickThree}
+              openThree={openThree}
+              anchorElThree={anchorElThree}
+              handleCloseThree={handleCloseThree}
+              sortLN={sortLN}
+              setSortLN={setSortLN}
+              sortLastNameDescData={sortLastNameDescData}
+              sortLastNameAscData={sortLastNameAscData}
+              handleClickFour={handleClickFour}
+              openFour={openFour}
+              anchorElFour={anchorElFour}
+              handleCloseFour={handleCloseFour}
+              sortEmail={sortEmail}
+              setSortEmail={setSortEmail}
+              sortEmailDescData={sortEmailDescData}
+              sortEmailAscData={sortEmailAscData}
+              handleClickFifth={handleClickFifth}
+              openFifth={openFifth}
+              anchorElFifth={anchorElFifth}
+              handleCloseFifth={handleCloseFifth}
+              sortGender={sortGender}
+              setSortGender={setSortGender}
+              sortGenderDescData={sortGenderDescData}
+              sortGenderAscData={sortGenderAscData}
+              handleClickSix={handleClickSix}
+              openSix={openSix}
+              anchorElSix={anchorElSix}
+              handleCloseSix={handleCloseSix}
+              sortIP={sortIP}
+              setSortIP={setSortIP}
+              sortIPDescData={sortIPDescData}
+              sortIPAscData={sortIPAscData}
+            />
+            {/* BODY */}
+            <BodyTable
+              add={add}
+              firstName={firstName}
+              lastName={lastName}
+              email={email}
+              gender={gender}
+              ip={ip}
+              del={del}
+              table={table}
+              close={close}
+              sortGTE={sortGTE}
+              sortGTEData={sortGTEData}
+              defaultSort={defaultSort}
+              setEmail={setEmail}
+              setGender={setGender}
+              setDel={setDel}
+              setAdd={setAdd}
+              setFirstName={setFirstName}
+              setLastName={setLastName}
+              setIp={setIp}
+              setClose={setClose}
+              setDefaultSort={setDefaultSort}
+              setSortGTE={setSortGTE}
+              handleAdd={handleAdd}
+              handleDelete={handleDelete}
+              handleEditFirstName={handleEditFirstName}
+              handleEditLastName={handleEditLastName}
+              handleEditEmail={handleEditEmail}
+              handleEditGender={handleEditGender}
+              handleEditIp={handleEditIp}
+              getDataDB={getDataDB}
+              snackArray={snackArray}
+            />
+          </Table>
+        </TableContainer>
+      )}
     </Stack>
   );
 }
