@@ -6,7 +6,7 @@ import {
   TableRow,
   TextField,
 } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function BodyTable({
   add,
@@ -19,6 +19,8 @@ export default function BodyTable({
   table,
   close,
   defaultSort,
+  sortGTE,
+  sortGTEData,
   setEmail,
   setGender,
   setDel,
@@ -28,6 +30,7 @@ export default function BodyTable({
   setIp,
   setClose,
   setDefaultSort,
+  setSortGTE,
   handleAdd,
   handleDelete,
   handleEditFirstName,
@@ -37,18 +40,9 @@ export default function BodyTable({
   handleEditIp,
   getDataDB,
 }) {
+  const [id, setId] = useState<string | null>(null);
   return (
     <TableBody>
-      <Button
-        variant='contained'
-        color='info'
-        onClick={() => {
-          setDefaultSort(!defaultSort);
-          getDataDB();
-        }}
-      >
-        Default sort
-      </Button>
       {add ? (
         <Button
           onClick={() => setAdd(!add)}

@@ -1,4 +1,13 @@
-import { TableContainer, Table, Paper, Stack, Button } from '@mui/material';
+import {
+  TableContainer,
+  Table,
+  Paper,
+  Stack,
+  Button,
+  TableRow,
+  TextField,
+  Box,
+} from '@mui/material';
 
 import React, { useEffect, useState } from 'react';
 import IndexApiTable from '../../components/ulttable/api';
@@ -21,6 +30,9 @@ export default function TableIndex() {
   const [close, setClose] = useState<boolean>(true);
   const [del, setDel] = useState<boolean>(false);
   const [add, setAdd] = useState<boolean>(true);
+  const [id, setId] = useState<string | null>(null);
+  const [idLTE, setIdLTE] = useState<string | null>(null);
+  const [idNum, setIdNum] = useState<string | null>(null);
 
   // SORT BOOLEAN
   const [defaultSort, setDefaultSort] = useState<boolean>(true);
@@ -30,6 +42,9 @@ export default function TableIndex() {
   const [sortEmail, setSortEmail] = useState<boolean>(true);
   const [sortGender, setSortGender] = useState<boolean>(true);
   const [sortIP, setSortIP] = useState<boolean>(true);
+  const [sortGTE, setSortGTE] = useState<boolean>(true);
+  const [sortLTE, setSortLTE] = useState<boolean>(true);
+  const [sortNum, setSortNum] = useState<boolean>(true);
 
   // ANCHOR and OPEN logic with using statements
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -63,6 +78,9 @@ export default function TableIndex() {
     sortGenderDescData,
     sortIPAscData,
     sortIPDescData,
+    sortGTEData,
+    sortLTEData,
+    sortIDNumData,
   } = TableApiSort({ setTable });
 
   async function getDataDB() {
@@ -155,7 +173,134 @@ export default function TableIndex() {
 
   return (
     <Stack alignItems={'center'}>
+      <Stack spacing={2}>
+        <Box>
+          {sortGTE ? (
+            <Button
+              color='success'
+              variant='contained'
+              onClick={() => setSortGTE(!sortGTE)}
+            >
+              SortGTE
+            </Button>
+          ) : (
+            <Box display={'flex'} flexDirection='column'>
+              <TextField
+                type='number'
+                placeholder='Sort greater than or equal to'
+                onChange={(e) => setId(e.target.value)}
+              />
+              <Button
+                color='success'
+                variant='contained'
+                onClick={() => {
+                  setSortGTE(!sortGTE);
+                  sortGTEData(id);
+                }}
+              >
+                Toggle
+              </Button>
+              <Button
+                color='error'
+                variant='contained'
+                onClick={() => {
+                  setSortGTE(!sortGTE);
+                }}
+              >
+                Cancel
+              </Button>
+            </Box>
+          )}
+        </Box>
+        <Box>
+          {sortLTE ? (
+            <Button
+              color='success'
+              variant='contained'
+              onClick={() => setSortLTE(!sortLTE)}
+            >
+              SortLTE
+            </Button>
+          ) : (
+            <Box display={'flex'} flexDirection='column'>
+              <TextField
+                type='number'
+                placeholder='Sort lower than or equal to'
+                onChange={(e) => setIdLTE(e.target.value)}
+              />
+              <Button
+                color='success'
+                variant='contained'
+                onClick={() => {
+                  setSortLTE(!sortLTE);
+                  sortLTEData(idLTE);
+                }}
+              >
+                Toggle
+              </Button>
+              <Button
+                color='error'
+                variant='contained'
+                onClick={() => {
+                  setSortLTE(!sortLTE);
+                }}
+              >
+                Cancel
+              </Button>
+            </Box>
+          )}
+        </Box>
+        <Box>
+          {sortNum ? (
+            <Button
+              color='success'
+              variant='contained'
+              onClick={() => setSortNum(!sortNum)}
+            >
+              SortNum
+            </Button>
+          ) : (
+            <Box display={'flex'} flexDirection='column'>
+              <TextField
+                type='number'
+                placeholder='Sort by id'
+                onChange={(e) => setIdNum(e.target.value)}
+              />
+              <Button
+                color='success'
+                variant='contained'
+                onClick={() => {
+                  setSortNum(!sortNum);
+                  sortIDNumData(idNum);
+                }}
+              >
+                Toggle
+              </Button>
+              <Button
+                color='error'
+                variant='contained'
+                onClick={() => {
+                  setSortNum(!sortNum);
+                }}
+              >
+                Cancel
+              </Button>
+            </Box>
+          )}
+        </Box>
+        <Button
+          variant='contained'
+          color='info'
+          onClick={() => {
+            setDefaultSort(!defaultSort);
+            getDataDB();
+          }}
+        >
+          Default sort
+        </Button>
+      </Stack>
       <TableContainer component={Paper}>
+        {' '}
         {/* START OF TABLE */}
         <Table aria-label='simple table'>
           {close ? null : (
@@ -230,6 +375,8 @@ export default function TableIndex() {
             del={del}
             table={table}
             close={close}
+            sortGTE={sortGTE}
+            sortGTEData={sortGTEData}
             defaultSort={defaultSort}
             setEmail={setEmail}
             setGender={setGender}
@@ -240,6 +387,7 @@ export default function TableIndex() {
             setIp={setIp}
             setClose={setClose}
             setDefaultSort={setDefaultSort}
+            setSortGTE={setSortGTE}
             handleAdd={handleAdd}
             handleDelete={handleDelete}
             handleEditFirstName={handleEditFirstName}
