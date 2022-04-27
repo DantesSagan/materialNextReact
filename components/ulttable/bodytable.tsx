@@ -39,13 +39,16 @@ export default function BodyTable({
   handleEditGender,
   handleEditIp,
   getDataDB,
+  snackArray,
 }) {
-  const [id, setId] = useState<string | null>(null);
   return (
     <TableBody>
       {add ? (
         <Button
-          onClick={() => setAdd(!add)}
+          onClick={() => {
+            snackArray.pop(0, snackArray.length - 1);
+            setAdd(!add);
+          }}
           variant='contained'
           color='success'
         >
@@ -55,7 +58,10 @@ export default function BodyTable({
         <TableRow sx={{ padding: '10px' }}>
           {add ? null : (
             <Button
-              onClick={() => setAdd(!add)}
+              onClick={() => {
+                snackArray.pop(0, snackArray.length - 1);
+                setAdd(!add);
+              }}
               variant='contained'
               color='error'
             >

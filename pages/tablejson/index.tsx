@@ -7,6 +7,7 @@ import {
   TableRow,
   TextField,
   Box,
+  Snackbar,
 } from '@mui/material';
 
 import React, { useEffect, useState } from 'react';
@@ -64,6 +65,10 @@ export default function TableIndex() {
 
   const [anchorElSix, setAnchorElSix] = useState<null | HTMLElement>(null);
   const openSix = Boolean(anchorElSix);
+
+  // SNACKBAR LIKE TOOLTIP
+  const [openSnack, setOpenSnack] = useState(false);
+  const [snackArray, setSnackArray] = useState<any>([]);
 
   const {
     sortIDAscData,
@@ -127,7 +132,19 @@ export default function TableIndex() {
     patchIp,
     submitData,
     deleteData,
+    snackArray,
+    setOpenSnack,
   });
+
+  const handleCloseSnack = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnack(!openSnack);
+  };
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -171,15 +188,55 @@ export default function TableIndex() {
     setAnchorElSix(null);
   };
 
+  const snArrayCheck = snackArray[0]
+    ? snackArray[0]
+    : snackArray[0] === Object
+    ? 'User added!'
+    : snackArray;
+  // ? snackArray[0]
+  // : snackArray.map(
+  //     (item: {
+  //       id: number | null;
+  //       first_name: string | null;
+  //       last_name: string | null;
+  //       email: string | null;
+  //       gender: string | null;
+  //       ip_address: string | null;
+  //     }) => {
+  //       item.id;
+  //       item.first_name;
+  //       item.last_name;
+  //       item.email;
+  //       item.gender;
+  //       item.ip_address;
+  //     }
+  //   );
+
+  console.log(snackArray);
   return (
     <Stack alignItems={'center'}>
-      <Stack spacing={2}>
-        <Box>
+      <Stack  display='flex' flexDirection='row'>
+        {' '}
+        <Snackbar
+          message={`Table changed successfully! ${snArrayCheck}`}
+          autoHideDuration={4000}
+          open={openSnack}
+          onClose={handleCloseSnack}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+        />
+        {/* SORT BY GREATER THAN OR EQUAL TO */}
+        <Box >
           {sortGTE ? (
             <Button
               color='success'
               variant='contained'
-              onClick={() => setSortGTE(!sortGTE)}
+              onClick={() => {
+                snackArray.pop(0, snackArray.length - 1);
+                setSortGTE(!sortGTE);
+              }}
             >
               SortGTE
             </Button>
@@ -194,6 +251,8 @@ export default function TableIndex() {
                 color='success'
                 variant='contained'
                 onClick={() => {
+                  snackArray.push(id);
+                  setOpenSnack(true);
                   setSortGTE(!sortGTE);
                   sortGTEData(id);
                 }}
@@ -212,12 +271,16 @@ export default function TableIndex() {
             </Box>
           )}
         </Box>
+        {/* SORT BY LESS THAN OR EQUAL TO */}
         <Box>
           {sortLTE ? (
             <Button
               color='success'
               variant='contained'
-              onClick={() => setSortLTE(!sortLTE)}
+              onClick={() => {
+                snackArray.pop(0, snackArray.length - 1);
+                setSortLTE(!sortLTE);
+              }}
             >
               SortLTE
             </Button>
@@ -232,6 +295,8 @@ export default function TableIndex() {
                 color='success'
                 variant='contained'
                 onClick={() => {
+                  snackArray.push(idLTE);
+                  setOpenSnack(true);
                   setSortLTE(!sortLTE);
                   sortLTEData(idLTE);
                 }}
@@ -250,12 +315,16 @@ export default function TableIndex() {
             </Box>
           )}
         </Box>
+        {/* SORT BY ID NUM */}
         <Box>
           {sortNum ? (
             <Button
               color='success'
               variant='contained'
-              onClick={() => setSortNum(!sortNum)}
+              onClick={() => {
+                snackArray.pop(0, snackArray.length - 1);
+                setSortNum(!sortNum);
+              }}
             >
               SortNum
             </Button>
@@ -270,8 +339,10 @@ export default function TableIndex() {
                 color='success'
                 variant='contained'
                 onClick={() => {
+                  snackArray.push(idNum);
                   setSortNum(!sortNum);
                   sortIDNumData(idNum);
+                  setOpenSnack(true);
                 }}
               >
                 Toggle
@@ -288,16 +359,19 @@ export default function TableIndex() {
             </Box>
           )}
         </Box>
-        <Button
-          variant='contained'
-          color='info'
-          onClick={() => {
-            setDefaultSort(!defaultSort);
-            getDataDB();
-          }}
-        >
-          Default sort
-        </Button>
+        {/* DEFAULT SORT */}
+        <Box display='flex' flexDirection='column'>
+          <Button
+            variant='contained'
+            color='info'
+            onClick={() => {
+              setDefaultSort(!defaultSort);
+              getDataDB();
+            }}
+          >
+            Default sort
+          </Button>
+        </Box>
       </Stack>
       <TableContainer component={Paper}>
         {' '}
@@ -396,6 +470,7 @@ export default function TableIndex() {
             handleEditGender={handleEditGender}
             handleEditIp={handleEditIp}
             getDataDB={getDataDB}
+            snackArray={snackArray}
           />
         </Table>
       </TableContainer>

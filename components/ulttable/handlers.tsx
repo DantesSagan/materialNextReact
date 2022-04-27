@@ -14,6 +14,8 @@ export default function HandlersTable({
   patchIp,
   submitData,
   deleteData,
+  snackArray,
+  setOpenSnack
 }) {
   const handleEditFirstName = (
     rowToEdit: string | null,
@@ -90,6 +92,8 @@ export default function HandlersTable({
       gender: gender,
       ip_address: ip,
     };
+    snackArray.push(newData);
+    setOpenSnack(true);
     submitData(newData);
     table.push(newData);
   };
