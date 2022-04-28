@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { LoadingButton } from '@mui/lab';
 import {
   Box,
   Card,
@@ -21,7 +22,8 @@ export default function CardIndex() {
   );
   const [array, setArray] = useState<[] | null>([]);
   const [open, setOpen] = useState(false);
-  const [closeInt, setCloseInt] = useState(false)
+  const [closeInt, setCloseInt] = useState(false);
+  const [num, setNum] = useState<number>(1);
 
   const convert: any | [] = array;
 
@@ -52,14 +54,14 @@ export default function CardIndex() {
     setTurn(false);
     ref.current = setInterval(() => {
       getData();
-      console.log('Та-да!');
+      console.log(`Та-да! ${num}`);
     }, 10000);
   };
   // clear interval of images to stop
   const clearInt = () => {
     console.log('Clear Interval clicked');
     clearInterval(ref.current);
-      setCloseInt(!closeInt);
+    setCloseInt(!closeInt);
   };
 
   const handleClose = (
@@ -72,13 +74,15 @@ export default function CardIndex() {
     setOpen(!open);
   };
 
-const handleCloseInt = (event?: React.SyntheticEvent | Event, reason?: string) => {
-  if (reason === 'clickaway') {
-    return reason;
-  }
-  setCloseInt(!closeInt);
-};
-
+  const handleCloseInt = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return reason;
+    }
+    setCloseInt(!closeInt);
+  };
   return (
     <Stack alignItems='center'>
       <Box width='300px'>
@@ -127,9 +131,20 @@ const handleCloseInt = (event?: React.SyntheticEvent | Event, reason?: string) =
             </div>
           )}
 
-          <Button ref={ref} onClick={startInterval}>
-            Refetch
-          </Button>
+          {loading ? (
+            <LoadingButton
+              loading
+              variant='outlined'
+              loadingPosition='start'
+              loadingIndicator='Loading...'
+            >
+              Refetch
+            </LoadingButton>
+          ) : (
+            <Button ref={ref} onClick={startInterval}>
+              Refetch
+            </Button>
+          )}
           <Button ref={ref} onClick={clearInt}>
             Clear
           </Button>

@@ -27,7 +27,7 @@ export default function SkeletonComponentIndex() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 500);
   }, []);
 
   return (

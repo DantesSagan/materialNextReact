@@ -406,6 +406,9 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             <MenuItem onClick={handleCloseFifth}>
               <Link href='/dialog'>Link to Dialog</Link>
             </MenuItem>
+             <MenuItem onClick={handleCloseFifth}>
+              <Link href='/skeleton'>Link to Skeleton</Link>
+            </MenuItem>
           </Menu>
         </Toolbar>
       ) : (
