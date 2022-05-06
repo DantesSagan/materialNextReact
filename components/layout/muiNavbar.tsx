@@ -415,6 +415,9 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             <MenuItem onClick={handleCloseFifth}>
               <Link href='/tabs'>Link to Tabs</Link>
             </MenuItem>
+             <MenuItem onClick={handleCloseFifth}>
+              <Link href='/masonry'>Link to Masonry</Link>
+            </MenuItem>
           </Menu>
         </Toolbar>
       ) : (

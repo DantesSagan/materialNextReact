@@ -65,6 +65,7 @@ function AccordionIndex<T>(props: ISomeComponentWithGenericsProps<T>) {
           </Typography>
         </div>
       )}
+      
       <Accordion
         expanded={expanded === 'panel1'}
         onChange={(_event, isExpanded) => handleChange(isExpanded, 'panel1')}
