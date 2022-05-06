@@ -116,7 +116,11 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             {checked ? 'White' : 'Black'}
           </Button>
 
-          <Stack display='flex' direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+          <Stack
+            display='flex'
+            direction={{ xs: 'column', sm: 'row' }}
+            spacing={2}
+          >
             <Button
               color='inherit'
               style={{
@@ -415,7 +419,10 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             <MenuItem onClick={handleCloseFifth}>
               <Link href='/tabs'>Link to Tabs</Link>
             </MenuItem>
-             <MenuItem onClick={handleCloseFifth}>
+            <MenuItem onClick={handleCloseFifth}>
+              <Link href='/responsiveness'>Link to Responsiveness</Link>
+            </MenuItem>
+            <MenuItem onClick={handleCloseFifth}>
               <Link href='/masonry'>Link to Masonry</Link>
             </MenuItem>
           </Menu>
