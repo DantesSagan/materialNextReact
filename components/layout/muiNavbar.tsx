@@ -116,7 +116,7 @@ export default function NavbarIndexTop({ checked, setChecked }) {
             {checked ? 'White' : 'Black'}
           </Button>
 
-          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+          <Stack display='flex' direction={{ xs: 'column', sm: 'row' }} spacing={2}>
             <Button
               color='inherit'
               style={{

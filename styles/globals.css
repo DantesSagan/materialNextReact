@@ -28,6 +28,17 @@ a {
   flex-direction: row;
 }
 
+@media only screen and (max-width: 1250px) {
+  .columnNavbar {
+    display: flex;
+    flex-direction: column;
+  }
+  .columnInner {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 @media only screen and (max-width: 850px) {
   .columnNavbar {
     display: flex;
